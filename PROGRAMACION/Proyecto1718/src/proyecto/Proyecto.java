@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import MisVentanas.*;
 import MisClases.*;
 import MisClasesBD.*;
+import java.sql.Date;
 import java.util.ArrayList;
 /**
  *
@@ -205,24 +206,20 @@ public class Proyecto {
         // </editor-fold>
         
         public static void generarCalendario(ArrayList <Equipo> e){
+            try{
             /*Funcion basada en el algoritmo Round Robin para la conmutacion a pares*/
-            
+            JornadaBD jb =new JornadaBD();
+            PartidoBD pb =new PartidoBD();
             Equipo eq = new Equipo();
+            Date fecha=new Date(1,1,1);
             
-            ArrayList <String> locales = new ArrayList <String> ();
-            ArrayList <String> visitantes = new ArrayList <String> ();
+            ArrayList <Equipo> locales = new ArrayList <Equipo> ();
+            ArrayList <Equipo> visitantes = new ArrayList <Equipo> ();
             
-            locales.add("A");
-            locales.add("B");
-            locales.add("C");
-            locales.add("D");
-            locales.add("E");
-            locales.add("F");
-            locales.add("G");
-            locales.add("H");
+            
             
             if(locales.size() % 2 != 0){
-                locales.add("DESCANSA");
+                locales.add(eq);
             }
             
             int jornadas = locales.size() - 1;
@@ -234,17 +231,32 @@ public class Proyecto {
                 locales.remove(x);
             }
             
-            String fijo = locales.get(0);
+            Equipo fijo = locales.get(0);
             locales.remove(0);
             
             for(int y=0;y<jornadas*2;y++){
                 System.out.println("----Jornada " + (y + 1) + "----");
-                System.out.println(fijo + "-" + visitantes.get(0));
-                
+                Jornada jor=new Jornada();
+                jor.setFecIni(fecha);
+                jor.setFecFin(fecha);
+                int idjornada=jb.insertarJornada(jor);
+                jor.setIdJornada(idjornada);
+                Partido p =new Partido();
+                p.setFecha(fecha);
+                p.setLocal(fijo);
+                p.setVisitante(visitantes.get(0));
+                p.setJornada(jor);
+                pb.insertarPartido(p);                
                 contador++;
                 
                 for(int i=0; i<locales.size(); i++){
-                    System.out.println(locales.get(i) + "-" + visitantes.get(i + 1));
+                    Partido par =new Partido();
+                    par.setFecha(fecha);
+                    par.setLocal(locales.get(i));
+                    par.setVisitante(visitantes.get(i+1));
+                    par.setJornada(jor);
+                    pb.insertarPartido(par);  
+                    
                     contador ++;
                 }
                 
@@ -256,6 +268,7 @@ public class Proyecto {
             
             System.out.println(contador);
             
-        }
+        }catch(Exception ex){}
     // </editor-fold>
+    }
 }

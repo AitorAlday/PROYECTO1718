@@ -8,6 +8,7 @@ package MisClasesBD;
 import MisClases.Jornada;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 /**
  *
@@ -17,21 +18,22 @@ public class JornadaBD {
     
     private static Connection con;
     
-    public static void insertarJornada(Jornada j) throws Exception{
+    public static int insertarJornada(Jornada j) throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         
         try{
-            PreparedStatement sentencia = con.prepareStatement("insert into Jornada values (?,?,?)");
+            PreparedStatement sentencia = con.prepareStatement("insert into Jornada values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
             sentencia.setInt(1, j.getIdJornada());
             sentencia.setDate(2, j.getFecIni());
             sentencia.setDate(3, j.getFecFin());
-            sentencia.executeUpdate();
+           int id= sentencia.executeUpdate();
             
             con.close();
+            return id;
         }
         catch(Exception e){
-            
+            return 0;
         }
     }
     
