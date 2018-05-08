@@ -114,8 +114,13 @@ public class Proyecto {
         if(user.getIdPersona() != null){
            JOptionPane.showMessageDialog(null, "Usuario logedo: " + user.getNombre() + user.getTipo()); 
            switch(user.getTipo()){
-               //case 1:JOptionPane.showMessageDialog(null, ab())
+               case 1:JOptionPane.showMessageDialog(null, "");//Abrir dueño
+               break;
+               case 2://Abrir admin
+                   break;//Añade los que sean y cuando hagas el insert tiene que coincidir el tipo con el numero aqui
            }
+        }else{
+            JOptionPane.showMessageDialog(null, "USuario incorrecto");
         }
           
     }
