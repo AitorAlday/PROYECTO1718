@@ -1,4 +1,7 @@
 --LAS TABLAS DEL PROYECTO
+
+ /*Necesitamos un id autoincremental para poder identificar la temporada en la que estamos, y tendrá un  atributo año para saber el año
+ en el que se celebró. La clase se usa para poder agrupar los partidos.*/
 DROP TABLE Temporada CASCADE CONSTRAINTS;
 CREATE TABLE Temporada (
   id_temporada INTEGER 
@@ -13,6 +16,8 @@ CREATE TABLE Temporada (
   año INTEGER NOT NULL        
 );
 
+ /*Necesitamos otro id autoincremental para identificar el equipo, y aparte tendrá un nombre cualquiera. La clase se usará para que el dueño pueda 
+  meter jugadores a algún lado*/
 DROP TABLE Equipo CASCADE CONSTRAINTS;
 CREATE TABLE Equipo (
   id_equipo INTEGER 
@@ -24,9 +29,13 @@ CREATE TABLE Equipo (
                       NOORDER NOCYCLE NOT NULL
                       ENABLE
             CONSTRAINT id_eq_pk PRIMARY KEY,
+  referencia VARCHAR(4) NOT NULL,          
   nombre VARCHAR(15) NOT NULL 
   );
 
+
+ /**/
+ 
 DROP TABLE Jugador CASCADE CONSTRAINTS;
 CREATE TABLE Jugador (
   id_jugador INTEGER 
@@ -38,6 +47,7 @@ CREATE TABLE Jugador (
                       NOORDER NOCYCLE NOT NULL
                       ENABLE
              CONSTRAINT id_ju_pk PRIMARY KEY,
+  dni VARCHAR(15) UNIQUE NOT NULL,           
   nickname VARCHAR(15) UNIQUE NOT NULL,
   nombre VARCHAR(15) NOT NULL,
   sueldo NUMBER(6,2) NOT NULL,
@@ -57,6 +67,7 @@ CREATE TABLE Persona (
                       NOORDER NOCYCLE NOT NULL
                       ENABLE
              CONSTRAINT id_pe_pk PRIMARY KEY,
+  dni VARCHAR(15) UNIQUE NOT NULL,             
   nombre VARCHAR(15) NOT NULL,
   tipo INTEGER NOT NULL,
   id_equipo INTEGER NULL,
