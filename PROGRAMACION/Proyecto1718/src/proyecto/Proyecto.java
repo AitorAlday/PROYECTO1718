@@ -210,6 +210,7 @@ public class Proyecto {
         }
         // </editor-fold>
         
+        // <editor-fold defaultstate="collapsed" desc="CALENDARIO">
         public static void generarCalendario(ArrayList <Equipo> e){
             try{
             /*Funcion basada en el algoritmo Round Robin para la conmutacion a pares*/
@@ -274,6 +275,8 @@ public class Proyecto {
             System.out.println(contador);
             
         }catch(Exception ex){}
+        // </editor-fold>
+        
     // </editor-fold>
     }
 }
