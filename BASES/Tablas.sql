@@ -1,4 +1,18 @@
 --LAS TABLAS DEL PROYECTO
+DROP TABLE Temporada CASCADE CONSTRAINTS;
+CREATE TABLE Temporada (
+  id_temporada INTEGER 
+    GENERATED ALWAYS AS IDENTITY
+                      MINVALUE 1
+                      MAXVALUE 999999
+                      INCREMENT BY 1
+                      START WITH 1
+                      NOORDER NOCYCLE NOT NULL
+                      ENABLE
+            CONSTRAINT id_te_pk PRIMARY KEY,
+  año DATE         
+);
+
 DROP TABLE Equipo CASCADE CONSTRAINTS;
 CREATE TABLE Equipo (
   id_equipo INTEGER 
@@ -99,11 +113,13 @@ CREATE TABLE Partido (
   id_ganador INTEGER,
   resultado VARCHAR(10),
   id_jornada INTEGER NOT NULL,
+  id_temporada INTEGER NOT NULL,
   
   CONSTRAINT id_jo_fk FOREIGN KEY (id_jornada) REFERENCES Jornada (id_jornada),
   CONSTRAINT id_local_fk FOREIGN KEY (id_local) REFERENCES Equipo (id_equipo),
   CONSTRAINT id_visit_fk FOREIGN KEY (id_visitante) REFERENCES Equipo (id_equipo),
-  CONSTRAINT id_gana_fk FOREIGN KEY (id_ganador) REFERENCES Equipo (id_equipo)
+  CONSTRAINT id_gana_fk FOREIGN KEY (id_ganador) REFERENCES Equipo (id_equipo),
+  CONSTRAINT id_tem_fk FOREIGN KEY (id_temporada) REFERENCES Temporada (id_temporada)
   );
   
   
