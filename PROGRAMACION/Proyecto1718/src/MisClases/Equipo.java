@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package MisClases;
-
+import MisClases.*;
+import java.util.ArrayList;
 /**
  *
  * @author Aitor Alday
@@ -14,6 +15,8 @@ public class Equipo {
     private Integer idEquipo;
     private String ref;
     private String nombre;
+    private ArrayList<Jugador> jugadores;
+    
 
     public Equipo(Integer idEquipo, String nombre) {
         this.idEquipo = idEquipo;
@@ -50,6 +53,14 @@ public class Equipo {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public ArrayList<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    public void setJugadores(ArrayList<Jugador> jugadores) {
+        this.jugadores = jugadores;
     }
     
     

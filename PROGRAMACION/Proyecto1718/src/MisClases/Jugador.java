@@ -5,7 +5,7 @@
  */
 package MisClases;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -19,9 +19,9 @@ public class Jugador {
     private String nick;
     private Double sueldo;
     
-    private ArrayList <Equipo> equipo;
+    private Equipo equipo;
 
-    public Jugador(Integer idJugador, String dni, String nombre, String nick, Double sueldo, ArrayList<Equipo> equipo) {
+    public Jugador(Integer idJugador, String dni, String nombre, String nick, Double sueldo, Equipo equipo) {
         this.idJugador = idJugador;
         this.dni = dni;
         this.nombre = nombre;
@@ -29,15 +29,6 @@ public class Jugador {
         this.sueldo = sueldo;
         this.equipo = equipo;
     }
-
-    public Jugador(String dni, String nombre, String nick, Double sueldo) {
-        this.dni = dni;
-        this.nombre = nombre;
-        this.nick = nick;
-        this.sueldo = sueldo;
-    }
-    
-    
 
     public Jugador() {
     }
@@ -82,13 +73,14 @@ public class Jugador {
         this.sueldo = sueldo;
     }
 
-    public ArrayList<Equipo> getEquipo() {
+    public Equipo getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(ArrayList<Equipo> equipo) {
+    public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
-    
+
+  
     
 }
