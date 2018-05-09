@@ -1,7 +1,7 @@
 --LAS TABLAS DEL PROYECTO
 
  /*Necesitamos un id autoincremental para poder identificar la temporada en la que estamos, y tendrá un  atributo año para saber el año
- en el que se celebró. La clase se usa para poder agrupar los partidos.*/
+ en el que se celebró y son ambos atributos obligatorios. La clase se usa para poder agrupar los partidos.*/
 DROP TABLE Temporada CASCADE CONSTRAINTS;
 CREATE TABLE Temporada (
   id_temporada INTEGER 
@@ -16,8 +16,8 @@ CREATE TABLE Temporada (
   año INTEGER NOT NULL        
 );
 
- /*Necesitamos otro id autoincremental para identificar el equipo, y aparte tendrá un nombre cualquiera. La clase se usará para que el dueño pueda 
-  meter jugadores a algún lado*/
+ /*Necesitamos otro id autoincremental para identificar el equipo, y aparte tendrá un atributo referencia para poder buscarlo más fácilmente
+  en la BD con progrmación y también un nombre cualquiera y son todos obligatorios. La clase se usará para que el dueño pueda meter jugadores a algún lado*/
 DROP TABLE Equipo CASCADE CONSTRAINTS;
 CREATE TABLE Equipo (
   id_equipo INTEGER 
@@ -34,8 +34,8 @@ CREATE TABLE Equipo (
   );
 
 
- /**/
- 
+ /*Tendremos un id autoincremental también para jugador para identificarlo en la BD, un dni para poder buscarlo fácilmente con NetBeans, un nickname
+  con el que el jugador se identifique en el juego, su nombre y su sueldo y son todos obligatorios. La tabla se usará para almcenar jugadores de los E-sports.*/
 DROP TABLE Jugador CASCADE CONSTRAINTS;
 CREATE TABLE Jugador (
   id_jugador INTEGER 
@@ -55,7 +55,9 @@ CREATE TABLE Jugador (
   
   CONSTRAINT id_eqj_fk FOREIGN KEY(id_equipo) REFERENCES Equipo (id_equipo));
   
-
+  /*Tendremos un id autoincremental también para persona para identificarlo en la BD, un dni para poder buscarlo fácilmente con NetBeans,  su nombre 
+  y su tipo, que será integer para en progrmacion elegir 1, 2 o 3 (admin, dueño o usuario) y son todos obligatorios. La tabla se usará para almcenar los tipos
+  de personas que toman parte en el evento.*/
 DROP TABLE Persona CASCADE CONSTRAINTS;
 CREATE TABLE Persona (
   id_persona INTEGER 
@@ -73,7 +75,7 @@ CREATE TABLE Persona (
   id_equipo INTEGER NULL,
   
   CONSTRAINT id_eqp_fk FOREIGN KEY (id_equipo) REFERENCES Equipo (id_equipo));
-  
+  /*Tiene otro id autoincremental, un usuario y una contraseña para acceder al programa. Sirve para guardar a los usuarios.*/
 DROP TABLE Login CASCADE CONSTRAINTS;
 CREATE TABLE Login (
   id_login INTEGER 
@@ -104,7 +106,10 @@ CREATE TABLE Jornada (
                       ENABLE
              CONSTRAINT id_jo_pk PRIMARY KEY,
   fec_ini DATE NOT NULL,
-  fec_fin DATE NOT NULL
+  fec_fin DATE NOT NULL,
+  id_temporada INTEGER NOT NULL,
+
+  CONSTRAINT id_tem_fk FOREIGN KEY (id_temporada) REFERENCES Temporada (id_temporada)
 );
   
 DROP TABLE Partido CASCADE CONSTRAINTS;
@@ -124,13 +129,11 @@ CREATE TABLE Partido (
   id_ganador INTEGER,
   resultado VARCHAR(10),
   id_jornada INTEGER NOT NULL,
-  id_temporada INTEGER NOT NULL,
   
   CONSTRAINT id_jo_fk FOREIGN KEY (id_jornada) REFERENCES Jornada (id_jornada),
   CONSTRAINT id_local_fk FOREIGN KEY (id_local) REFERENCES Equipo (id_equipo),
   CONSTRAINT id_visit_fk FOREIGN KEY (id_visitante) REFERENCES Equipo (id_equipo),
-  CONSTRAINT id_gana_fk FOREIGN KEY (id_ganador) REFERENCES Equipo (id_equipo),
-  CONSTRAINT id_tem_fk FOREIGN KEY (id_temporada) REFERENCES Temporada (id_temporada)
+  CONSTRAINT id_gana_fk FOREIGN KEY (id_ganador) REFERENCES Equipo (id_equipo)
   );
   
   
