@@ -10,7 +10,7 @@ CREATE TABLE Temporada (
                       NOORDER NOCYCLE NOT NULL
                       ENABLE
             CONSTRAINT id_te_pk PRIMARY KEY,
-  año DATE         
+  año INTEGER NOT NULL        
 );
 
 DROP TABLE Equipo CASCADE CONSTRAINTS;
