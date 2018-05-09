@@ -78,7 +78,7 @@ public class JugadorBD {
             sentencia.setString(1, dni);
             ResultSet resultado = sentencia.executeQuery();
             if(resultado.next()){
-                Jugador j = new Jugador(resultado.getString(2),resultado.getString(3), resultado.getString(4), resultado.getDouble(5)); //Para recoger la informacion de la base y crear un objeto con ella
+                Jugador j = new Jugador(resultado.getInt(1),resultado.getString(2),resultado.getString(3), resultado.getString(4), resultado.getDouble(5)); //Para recoger la informacion de la base y crear un objeto con ella
                 con.close();
                 return j;
             }

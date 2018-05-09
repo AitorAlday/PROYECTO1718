@@ -16,6 +16,7 @@ public class Jornada {
     private Integer idJornada;
     private Date fecIni;
     private Date fecFin;
+    private Temporada temporada;
 
     public Jornada(Integer idJornada, Date fecIni, Date fecFin) {
         this.idJornada = idJornada;
@@ -49,6 +50,15 @@ public class Jornada {
     public void setFecFin(Date fecFin) {
         this.fecFin = fecFin;
     }
+
+    public Temporada getTemporada() {
+        return temporada;
+    }
+
+    public void setTemporada(Temporada temporada) {
+        this.temporada = temporada;
+    }
+    
     
     
 }
