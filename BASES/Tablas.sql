@@ -93,7 +93,8 @@ CREATE TABLE Login (
   
   CONSTRAINT id_per_fk FOREIGN KEY (id_persona) REFERENCES Persona (id_persona));
   
-  
+  /*También tiene un id autoincremental, una fecha de inicio y una fecha final, todos obligaorios. Sirve para almacenar los partidos y dividirlosd 
+   de algun modo.*/
 DROP TABLE Jornada CASCADE CONSTRAINTS;
 CREATE TABLE Jornada (
   id_jornada INTEGER 
@@ -111,7 +112,11 @@ CREATE TABLE Jornada (
 
   CONSTRAINT id_tem_fk FOREIGN KEY (id_temporada) REFERENCES Temporada (id_temporada)
 );
-  
+  /*tenemos un id autoincremental, como en todas, para identificar cada partido jugado. la fk a local y a visitante pueden ser nulos porque 
+  en el caso de que sea un número impar de equipos un equipo descansara dicha jornada y en la tabla partidos será un nulo. El id ganador puede 
+  ser nulo porque al generar el calendario el partido no se habrá jugado aún y no habra ganador aun, es una fk para facilitar la generación de 
+  la clasificación(la select consistiría en contar el número de partidos de la temporada en el que el ganador sea idEquipo y multiplicarlo por 
+  el número de puntos que se obtienen por victoria y ordenarlos posteriormente)*/
 DROP TABLE Partido CASCADE CONSTRAINTS;
 CREATE TABLE Partido (
   id_partido INTEGER 
