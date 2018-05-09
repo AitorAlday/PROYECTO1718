@@ -15,4 +15,21 @@ import java.sql.ResultSet;
  */
 public class TemporadaBD {
     
+    private static Connection con;
+    
+    public static void insertarTemporada(Temporada t) throws Exception{
+       GenericoBD gbd = new GenericoBD();
+       con = gbd.abrirConexion(con);
+       try{
+           PreparedStatement sentencia = con.prepareStatement("insert into Temporada(año) values (?)");
+           sentencia.setInt(1, t.getAnio());
+           
+           sentencia.executeUpdate();
+
+           con.close();
+       }
+       catch(Exception e){
+
+       }
+    }
 }

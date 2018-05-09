@@ -27,6 +27,7 @@ public class Proyecto {
     
     
     public static void main(String[] args) {
+        
         dL = new DLogin(fondo, true);
         dL.setVisible(true);
         
@@ -210,7 +211,8 @@ public class Proyecto {
         }
         // </editor-fold>
         
-        // <editor-fold defaultstate="collapsed" desc="CALENDARIO">
+        // <editor-fold defaultstate="collapsed" desc="LIGA">
+        
         public static void generarCalendario(ArrayList <Equipo> e){
             try{
             /*Funcion basada en el algoritmo Round Robin para la conmutacion a pares*/
