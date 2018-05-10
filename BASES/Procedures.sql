@@ -3,7 +3,7 @@ SET serveroutput ON;
 
 --CABECERA DEL PAQUETE
 CREATE OR REPLACE PACKAGE Proyecto1718 IS
-  PROCEDURE generarLogin (v_dni IN VARCHAR , v_nombre IN VARCHAR, v_tipo IN VARCHAR);
+  PROCEDURE generarLogin (v_dni IN VARCHAR , v_nombre IN VARCHAR, v_tipo IN INTEGER);
 END Proyecto1718;  
 
 --CUERPO DEL PAQUETE
@@ -12,7 +12,7 @@ END Proyecto1718;
 --1: Usuario
 --2: Dueño
 CREATE OR REPLACE PACKAGE BODY Proyecto1718 IS
-  PROCEDURE generarLogin (v_dni IN VARCHAR , v_nombre IN VARCHAR, v_tipo IN VARCHAR) AS
+  PROCEDURE generarLogin (v_dni IN VARCHAR , v_nombre IN VARCHAR, v_tipo IN INTEGER) AS
     usuario VARCHAR(15);
     pass VARCHAR(15);
   BEGIN 
