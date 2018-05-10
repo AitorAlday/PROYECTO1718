@@ -162,18 +162,18 @@ public class Proyecto {
         // </editor-fold>
     
         // <editor-fold defaultstate="collapsed" desc="JUGADOR">
-        public static void insertarJugador(String dni, String nick, String nombre, Double sueldo,Equipo e) throws Exception{
-            Jugador j = new Jugador(dni, nick, nombre, sueldo,e);
+        public static void insertarJugador(String dni, String nick, String nombre, Double sueldo, Equipo e) throws Exception{
+            Jugador j = new Jugador(dni, nick, nombre, sueldo, e);
             JugadorBD.insertarJugador(j);
         }
         
-        public static void borrarJugador(int id, String dni, String nick, String nombre, Double sueldo) throws Exception{
-            Jugador j = new Jugador( id,dni, nick, nombre, sueldo);
+        public static void borrarJugador(String dni, String nick, String nombre, Double sueldo, Equipo e) throws Exception{
+            Jugador j = new Jugador( dni, nick, nombre, sueldo, e);
             JugadorBD.borrarJugador(j);
         }
         
-        public static void modificarJugador(int id, String dni, String nick, String nombre, Double sueldo) throws Exception{
-            Jugador j = new Jugador( id,dni, nick, nombre, sueldo);
+        public static void modificarJugador(String dni, String nick, String nombre, Double sueldo) throws Exception{
+            Jugador j = new Jugador(dni, nick, nombre, sueldo);
             JugadorBD.borrarJugador(j);
         }
         

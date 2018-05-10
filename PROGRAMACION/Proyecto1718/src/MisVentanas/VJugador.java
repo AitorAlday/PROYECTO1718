@@ -54,6 +54,8 @@ public class VJugador extends javax.swing.JFrame {
         rbCrear = new javax.swing.JRadioButton();
         rbEditar = new javax.swing.JRadioButton();
         bBuscar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        cbEquipo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +107,8 @@ public class VJugador extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,13 +124,15 @@ public class VJugador extends javax.swing.JFrame {
                                     .addComponent(jLabels)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tfDni, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                                     .addComponent(tfNick)
                                     .addComponent(tfNombre)
-                                    .addComponent(tfSueldo))
+                                    .addComponent(tfSueldo)
+                                    .addComponent(cbEquipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(74, 74, 74)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rbCrear)
@@ -173,13 +179,17 @@ public class VJugador extends javax.swing.JFrame {
                         .addComponent(rbCrear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbEditar)))
-                .addGap(62, 62, 62)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cbEquipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAceptar)
                     .addComponent(bVolver))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bBuscar)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,7 +230,7 @@ public class VJugador extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
             if(rbBorrar.isSelected()){
-                proyecto.Proyecto.borrarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()));
+                proyecto.Proyecto.borrarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()), cbEquipo.getSelectedIndex());
                 tfDni.setText("");
                 tfNick.setText("");
                 tfNombre.setText("");
@@ -228,7 +238,7 @@ public class VJugador extends javax.swing.JFrame {
             }
             else{
                 if(rbCrear.isSelected()){
-                    proyecto.Proyecto.insertarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()));
+                    proyecto.Proyecto.insertarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()), cbEquipo.getSelectedIndex());
                     tfDni.setText("");
                     tfNick.setText("");
                     tfNombre.setText("");
@@ -287,7 +297,9 @@ public class VJugador extends javax.swing.JFrame {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bVolver;
+    private javax.swing.JComboBox<String> cbEquipo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

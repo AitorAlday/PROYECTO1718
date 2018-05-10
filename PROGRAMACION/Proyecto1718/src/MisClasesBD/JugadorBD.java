@@ -40,7 +40,7 @@ public class JugadorBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
          try{
-            PreparedStatement sentencia = con.prepareStatement("update Jugador set id_jugador=?, dni=? nickname=? nombre=?, sueldo=?");
+            PreparedStatement sentencia = con.prepareStatement("update Jugador set id_jugador=?, dni=? nickname=? nombre=?, sueldo=? where id_jugador=?");
             sentencia.setInt(1, j.getIdJugador());
             sentencia.setString(2, j.getDni());
             sentencia.setString(3, j.getNick());

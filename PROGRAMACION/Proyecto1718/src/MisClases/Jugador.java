@@ -21,15 +21,6 @@ public class Jugador {
     
     private Equipo equipo;
 
-    public Jugador(Integer idJugador, String dni, String nombre, String nick, Double sueldo, Equipo equipo) {
-        this.idJugador = idJugador;
-        this.dni = dni;
-        this.nombre = nombre;
-        this.nick = nick;
-        this.sueldo = sueldo;
-        this.equipo = equipo;
-    }
-
     public Jugador(String dni, String nombre, String nick, Double sueldo, Equipo equipo) {
         this.dni = dni;
         this.nombre = nombre;
@@ -38,11 +29,15 @@ public class Jugador {
         this.equipo = equipo;
     }
     
-    
-    
-    
     public Jugador(Integer idJugador, String dni, String nombre, String nick, Double sueldo) {
         this.idJugador = idJugador;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.nick = nick;
+        this.sueldo = sueldo;
+    }
+    
+    public Jugador(String dni, String nombre, String nick, Double sueldo) {
         this.dni = dni;
         this.nombre = nombre;
         this.nick = nick;

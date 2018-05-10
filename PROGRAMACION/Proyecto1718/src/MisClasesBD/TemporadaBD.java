@@ -8,7 +8,6 @@ package MisClasesBD;
 import MisClases.Temporada;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 /**
  *
  * @author Aitor Alday
