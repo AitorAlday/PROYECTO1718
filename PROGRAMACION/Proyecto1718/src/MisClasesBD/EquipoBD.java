@@ -9,6 +9,7 @@ import MisClases.Equipo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -69,7 +70,7 @@ public class EquipoBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try{
-            PreparedStatement sentencia = con.prepareStatement("select * from Persona where referencia=?");
+            PreparedStatement sentencia = con.prepareStatement("select * from Equipo where referencia=?");
             sentencia.setString(1, ref);
             ResultSet resultado = sentencia.executeQuery();
             if(resultado.next()){
@@ -81,6 +82,26 @@ public class EquipoBD {
                 con.close();
                 return null;
             }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public static Equipo buscarParaCb(String nombre) throws Exception{
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("select * from Equipo");
+            sentencia.setString(1, nombre);
+            ResultSet resultado = sentencia.executeQuery();
+            ArrayList <Equipo> lista = new ArrayList();
+            
+            while(resultado.next()){
+                lista.add(resultado.getString(1));
+            }
+            return lista;
         }
         catch(Exception e){
             System.out.println(e.getMessage());

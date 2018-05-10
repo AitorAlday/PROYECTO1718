@@ -23,6 +23,10 @@ public class Equipo {
         this.nombre = nombre;
     }
     
+     public Equipo(String nombre) {
+        this.nombre = nombre;
+    }
+    
     public Equipo(String ref, String nombre) {
         this.ref=ref;
         this.nombre = nombre;

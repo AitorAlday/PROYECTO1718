@@ -5,6 +5,8 @@
  */
 package MisVentanas;
 
+import MisClases.Equipo;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,9 +17,12 @@ public class VJugador extends javax.swing.JFrame {
 
     private char opt;
     public static VPrincipal vP;
+    public static ArrayList <Equipo> e; 
     
     public VJugador() {
         initComponents();
+        
+        rellenarCb();
     }
     
     public VJugador(char opcion){
@@ -312,4 +317,11 @@ public class VJugador extends javax.swing.JFrame {
     private javax.swing.JTextField tfNombre;
     private javax.swing.JTextField tfSueldo;
     // End of variables declaration//GEN-END:variables
+
+    private void rellenarCb() {
+        proyecto.Proyecto.buscarParaRellenar();
+        for(int x = 0; x<e.size(); x++){
+            cbEquipo.insertItemAt();
+        }
+    }
 }

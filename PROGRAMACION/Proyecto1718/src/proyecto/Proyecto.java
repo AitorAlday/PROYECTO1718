@@ -129,7 +129,7 @@ public class Proyecto {
     }
     
     public static void cerrarLogin() {
-       dL.dispose();
+       System.exit(0);
     }
     
     public static void toDLogin(String mensaje) {
@@ -206,6 +206,10 @@ public class Proyecto {
         
         public static Equipo buscarEquipoRef(String ref)throws Exception{
             return EquipoBD.buscarEquipo(ref);
+        }
+        public static Equipo buscarParaRellenar(String nombre) throws Exception{
+            
+            return EquipoBD.buscarParaCb(nombre);
         }
         
         public static void toVEquipo(String mensaje){

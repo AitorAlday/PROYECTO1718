@@ -19,7 +19,7 @@ public class VPrincipal extends javax.swing.JFrame {
         
         pe = proyecto.Proyecto.per;
         
-        habilitarModo();
+        //habilitarModo();
         
         setLocationRelativeTo(null);
     }
@@ -244,7 +244,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miPersona;
     // End of variables declaration//GEN-END:variables
 
-    private void habilitarModo() {
+    /*private void habilitarModo() {
         //Si no funciona llamar a MAGNO
         switch(pe.getTipo()){
             case 0:
@@ -260,5 +260,5 @@ public class VPrincipal extends javax.swing.JFrame {
                 jmAdmin.setEnabled(false);
                 break;
         }
-    }
+    }*/
 }
