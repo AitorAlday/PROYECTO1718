@@ -76,6 +76,11 @@ public class Proyecto {
         vP.setVisible(true);
         vP.setLocationRelativeTo(vP);
     }
+    public static void abrirPrincipal(int tipo){
+        vP = new VPrincipal(tipo);
+        vP.setVisible(true);
+        vP.setLocationRelativeTo(vP);
+    }
     // </editor-fold>
     
     // <editor-fold defaultstate="collapsed" desc="Cerrar ventanas">
@@ -116,12 +121,9 @@ public class Proyecto {
         
         if(user.getIdPersona() != null){
            JOptionPane.showMessageDialog(null, "Usuario logeado: " + user.getNombre() + user.getTipo()); 
-           switch(user.getTipo()){
-               case 1:JOptionPane.showMessageDialog(null, "");//Abrir dueño
-               break;
-               case 2://Abrir admin
-                   break;//Añade los que sean y cuando hagas el insert tiene que coincidir el tipo con el numero aqui
-           }
+           
+            abrirPrincipal(user.getTipo());
+               
         }else{
             JOptionPane.showMessageDialog(null, "Usuario incorrecto");
         }

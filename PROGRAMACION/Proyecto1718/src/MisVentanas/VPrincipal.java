@@ -14,16 +14,24 @@ import MisClases.Persona;
 public class VPrincipal extends javax.swing.JFrame {
 
     public static Persona pe;
+    public VPrincipal(int tipo) {
+        initComponents();
+        
+        
+        
+        habilitarModo(tipo);
+        
+        setLocationRelativeTo(null);
+    }
     public VPrincipal() {
         initComponents();
         
         pe = proyecto.Proyecto.per;
         
-        //habilitarModo();
+     
         
         setLocationRelativeTo(null);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -244,9 +252,9 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miPersona;
     // End of variables declaration//GEN-END:variables
 
-    /*private void habilitarModo() {
+    private void habilitarModo(int tipo) {
         //Si no funciona llamar a MAGNO
-        switch(pe.getTipo()){
+        switch(tipo){
             case 0:
                 jmUsuario.setEnabled(false);
                 jmDuenio.setEnabled(false);
@@ -260,5 +268,5 @@ public class VPrincipal extends javax.swing.JFrame {
                 jmAdmin.setEnabled(false);
                 break;
         }
-    }*/
+    }
 }

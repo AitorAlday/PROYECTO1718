@@ -89,7 +89,7 @@ public class EquipoBD {
         }
     }
 
-    public static Equipo buscarParaCb(String nombre) throws Exception{
+    public static ArrayList buscarParaCb(String nombre) throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try{
@@ -99,7 +99,8 @@ public class EquipoBD {
             ArrayList <Equipo> lista = new ArrayList();
             
             while(resultado.next()){
-                lista.add(resultado.getString(1));
+                Equipo e=new Equipo(resultado.getInt(1),resultado.getString(2));
+                lista.add(e);
             }
             return lista;
         }
