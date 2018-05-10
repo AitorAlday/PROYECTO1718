@@ -105,7 +105,9 @@ public class Proyecto {
      * @param usuario El usuario con el que te logeas
      * @param contraseña La contraseña con la que te logeas
      */ 
-    
+    public static void crearUsuario(String usuario, String contra) throws Exception{
+        
+    }
     public static void login(String usuario, String contra) throws Exception{
         Login l = new Login(usuario, contra);
         LoginBD lo = new LoginBD();
@@ -113,7 +115,7 @@ public class Proyecto {
         Persona user = lo.logearUsuario(l);
         
         if(user.getIdPersona() != null){
-           JOptionPane.showMessageDialog(null, "Usuario logedo: " + user.getNombre() + user.getTipo()); 
+           JOptionPane.showMessageDialog(null, "Usuario logeado: " + user.getNombre() + user.getTipo()); 
            switch(user.getTipo()){
                case 1:JOptionPane.showMessageDialog(null, "");//Abrir dueño
                break;
