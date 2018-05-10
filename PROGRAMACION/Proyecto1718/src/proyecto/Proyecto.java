@@ -42,7 +42,7 @@ public class Proyecto {
     public static void inicioRoot() {
         vP = new VPrincipal();
         vP.setVisible(true);
-        vP.setLocationRelativeTo(vP);
+        vP.setLocationRelativeTo(null);
         
         dL.dispose();
     }
@@ -121,7 +121,7 @@ public class Proyecto {
                    break;//Añade los que sean y cuando hagas el insert tiene que coincidir el tipo con el numero aqui
            }
         }else{
-            JOptionPane.showMessageDialog(null, "USuario incorrecto");
+            JOptionPane.showMessageDialog(null, "Usuario incorrecto");
         }
           
     }

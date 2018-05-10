@@ -107,7 +107,7 @@ public class VJugador extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Equipo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -230,7 +230,7 @@ public class VJugador extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
             if(rbBorrar.isSelected()){
-                proyecto.Proyecto.borrarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()), cbEquipo.getSelectedIndex());
+                proyecto.Proyecto.borrarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()), cbEquipo.getSelectedIndex());//Preguntar como coger el idequipo
                 tfDni.setText("");
                 tfNick.setText("");
                 tfNombre.setText("");

@@ -23,7 +23,7 @@ public class PersonaBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try{
-            PreparedStatement sentencia = con.prepareStatement("insert into Persona(dni, nombre, tipo) values (?,?,?)");
+            PreparedStatement sentencia = con.prepareStatement("insert into Persona(dni, nombre, tipo) values (?, ?, ?)");
             sentencia.setString(1, p.getDni());
             sentencia.setString(2, p.getNombre());
             sentencia.setInt(3, p.getTipo());

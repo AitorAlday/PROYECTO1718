@@ -5,6 +5,7 @@
  */
 package MisVentanas;
 
+import MisClases.Equipo;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,26 +45,27 @@ public class VEquipos extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        tfId = new javax.swing.JTextField();
+        tfReferencia = new javax.swing.JTextField();
         tfNombre = new javax.swing.JTextField();
         bAceptar = new javax.swing.JButton();
         bVolver = new javax.swing.JButton();
         rbCrear = new javax.swing.JRadioButton();
         rbBorrar = new javax.swing.JRadioButton();
         rbEditar = new javax.swing.JRadioButton();
+        bBuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("EQUIPOS");
 
-        jLabel4.setText("ID del equipo:");
+        jLabel4.setText("Referencia:");
 
         jLabel5.setText("Nombre:");
 
-        tfId.addActionListener(new java.awt.event.ActionListener() {
+        tfReferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfIdActionPerformed(evt);
+                tfReferenciaActionPerformed(evt);
             }
         });
 
@@ -105,6 +107,13 @@ public class VEquipos extends javax.swing.JFrame {
             }
         });
 
+        bBuscar.setText("Buscar");
+        bBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,7 +137,10 @@ public class VEquipos extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bBuscar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(rbBorrar)
@@ -139,22 +151,27 @@ public class VEquipos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbCrear)
-                    .addComponent(rbBorrar)
-                    .addComponent(rbEditar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbCrear)
+                            .addComponent(rbBorrar)
+                            .addComponent(rbEditar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(bBuscar)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -172,37 +189,74 @@ public class VEquipos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void habilitarTodos(){
-        tfId.setEnabled(true);
+        tfReferencia.setEnabled(true);
         tfNombre.setEnabled(true);
     }
-    private void tfIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdActionPerformed
+    private void tfReferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfReferenciaActionPerformed
         
-    }//GEN-LAST:event_tfIdActionPerformed
+    }//GEN-LAST:event_tfReferenciaActionPerformed
 
     private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
+        vP = new VPrincipal();
+        vP.setVisible(true);
+        vP.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_bVolverActionPerformed
 
     private void rbCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCrearActionPerformed
         opt='c';
         habilitarTodos();
-        tfId.setEnabled(false);
+        bBuscar.setVisible(false);
+        bBuscar.setEnabled(false);        
     }//GEN-LAST:event_rbCrearActionPerformed
 
     private void rbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBorrarActionPerformed
         opt='b';
         habilitarTodos();
         tfNombre.setEnabled(false);
+        bBuscar.setVisible(true);
+        bBuscar.setEnabled(true);
     }//GEN-LAST:event_rbBorrarActionPerformed
 
     private void rbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEditarActionPerformed
         opt='e';
         habilitarTodos();
+        bBuscar.setVisible(true);
+        bBuscar.setEnabled(true);
     }//GEN-LAST:event_rbEditarActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
-        
+        try{
+            if(rbBorrar.isSelected()){
+                proyecto.Proyecto.borrarEquipo(tfReferencia.getText(), tfNombre.getText());
+                tfReferencia.setText("");
+                tfNombre.setText("");
+            }
+            else{
+                if(rbCrear.isSelected()){
+                    proyecto.Proyecto.insertarEquipo(tfReferencia.getText(), tfNombre.getText());
+                    tfReferencia.setText("");
+                    tfNombre.setText("");
+                }
+                else{
+                    proyecto.Proyecto.modificarEquipo(tfReferencia.getText(), tfNombre.getText());
+                }
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
+        try{
+            Equipo e = proyecto.Proyecto.buscarEquipoRef(tfReferencia.getText());
+            tfNombre.setText(e.getNombre());
+        }
+        catch(Exception e){
+            System.out.println("Error");
+        }
+    }//GEN-LAST:event_bBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,6 +300,7 @@ public class VEquipos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAceptar;
+    private javax.swing.JButton bBuscar;
     private javax.swing.JButton bVolver;
     private javax.swing.ButtonGroup bgaction;
     private javax.swing.JLabel jLabel1;
@@ -255,7 +310,7 @@ public class VEquipos extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbBorrar;
     private javax.swing.JRadioButton rbCrear;
     private javax.swing.JRadioButton rbEditar;
-    private javax.swing.JTextField tfId;
     private javax.swing.JTextField tfNombre;
+    private javax.swing.JTextField tfReferencia;
     // End of variables declaration//GEN-END:variables
 }

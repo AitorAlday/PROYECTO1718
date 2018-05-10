@@ -47,7 +47,7 @@ CREATE TABLE Jugador (
                       NOORDER NOCYCLE NOT NULL
                       ENABLE
              CONSTRAINT id_ju_pk PRIMARY KEY,
-  dni VARCHAR(15) UNIQUE NOT NULL,           
+  dni VARCHAR(9) UNIQUE NOT NULL,           
   nickname VARCHAR(15) UNIQUE NOT NULL,
   nombre VARCHAR(15) NOT NULL,
   sueldo NUMBER(6,2) NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE Persona (
                       NOORDER NOCYCLE NOT NULL
                       ENABLE
              CONSTRAINT id_pe_pk PRIMARY KEY,
-  dni VARCHAR(15) UNIQUE NOT NULL,             
+  dni VARCHAR(9) UNIQUE NOT NULL,             
   nombre VARCHAR(15) NOT NULL,
   tipo INTEGER NOT NULL,
   id_equipo INTEGER NULL,

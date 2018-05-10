@@ -218,6 +218,7 @@ public class VPersonas extends javax.swing.JFrame {
     private void rbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBorrarActionPerformed
         opt='b';
         tfDni.setEnabled(true);
+        tfNombre.setEnabled(false);
         bBuscar.setVisible(true);
         bBuscar.setEnabled(true);
     }//GEN-LAST:event_rbBorrarActionPerformed

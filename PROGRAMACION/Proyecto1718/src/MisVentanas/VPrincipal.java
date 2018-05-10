@@ -41,12 +41,10 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         miJugador = new javax.swing.JMenuItem();
         miEquipo = new javax.swing.JMenuItem();
@@ -79,14 +77,6 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jMenu3.setText("Dueño");
 
-        jMenuItem2.setText("Nuevo Equipo");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem2);
-
         jMenu4.setText("Gestionar equipos");
 
         jMenuItem6.setText("Eliminar Equipo");
@@ -95,13 +85,15 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenuItem7.setText("Modificar Equipos");
         jMenu4.add(jMenuItem7);
 
+        jMenuItem2.setText("Nuevo Equipo");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem2);
+
         jMenu3.add(jMenu4);
-
-        jCheckBoxMenuItem1.setText("Jornada");
-        jMenu3.add(jCheckBoxMenuItem1);
-
-        jCheckBoxMenuItem3.setText("Clasificacion");
-        jMenu3.add(jCheckBoxMenuItem3);
 
         jMenuBar1.add(jMenu3);
 
@@ -215,9 +207,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu10;
