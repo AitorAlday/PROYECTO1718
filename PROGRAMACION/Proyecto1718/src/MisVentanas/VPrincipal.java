@@ -5,17 +5,21 @@
  */
 package MisVentanas;
 
+import MisClases.Persona;
+
 /**
  *
  * @author Aitor Alday
  */
 public class VPrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    public static Persona pe;
     public VPrincipal() {
         initComponents();
+        
+        pe = proyecto.Proyecto.per;
+        
+        habilitarModo();
         
         setLocationRelativeTo(null);
     }
@@ -38,14 +42,14 @@ public class VPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        jmUsuario = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jmDuenio = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        jmAdmin = new javax.swing.JMenu();
         miJugador = new javax.swing.JMenuItem();
         miEquipo = new javax.swing.JMenuItem();
         miPersona = new javax.swing.JMenuItem();
@@ -68,14 +72,14 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MisVentanas/imagenes/FondoPrincipal.jpg"))); // NOI18N
 
-        jMenu2.setText("Equipos");
+        jmUsuario.setText("Equipos");
 
         jMenuItem1.setText("Listado de equipos");
-        jMenu2.add(jMenuItem1);
+        jmUsuario.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jmUsuario);
 
-        jMenu3.setText("Dueño");
+        jmDuenio.setText("Dueño");
 
         jMenu4.setText("Gestionar equipos");
 
@@ -93,11 +97,11 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem2);
 
-        jMenu3.add(jMenu4);
+        jmDuenio.add(jMenu4);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jmDuenio);
 
-        jMenu6.setText("Administrador");
+        jmAdmin.setText("Administrador");
 
         miJugador.setText("Jugadores");
         miJugador.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +109,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 miJugadorActionPerformed(evt);
             }
         });
-        jMenu6.add(miJugador);
+        jmAdmin.add(miJugador);
 
         miEquipo.setText("Equipos");
         miEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +117,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 miEquipoActionPerformed(evt);
             }
         });
-        jMenu6.add(miEquipo);
+        jmAdmin.add(miEquipo);
 
         miPersona.setText("Personas");
         miPersona.addActionListener(new java.awt.event.ActionListener() {
@@ -121,12 +125,12 @@ public class VPrincipal extends javax.swing.JFrame {
                 miPersonaActionPerformed(evt);
             }
         });
-        jMenu6.add(miPersona);
+        jmAdmin.add(miPersona);
 
         jMenuItem11.setText("Calendario");
-        jMenu6.add(jMenuItem11);
+        jmAdmin.add(jMenuItem11);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(jmAdmin);
 
         setJMenuBar(jMenuBar1);
 
@@ -211,11 +215,8 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem11;
@@ -225,8 +226,29 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenu jmAdmin;
+    private javax.swing.JMenu jmDuenio;
+    private javax.swing.JMenu jmUsuario;
     private javax.swing.JMenuItem miEquipo;
     private javax.swing.JMenuItem miJugador;
     private javax.swing.JMenuItem miPersona;
     // End of variables declaration//GEN-END:variables
+
+    private void habilitarModo() {
+        //Si no funciona llamar a MAGNO
+        switch(pe.getTipo()){
+            case 0:
+                jmUsuario.setEnabled(false);
+                jmDuenio.setEnabled(false);
+                break;
+            case 1:
+                jmDuenio.setEnabled(false);
+                jmAdmin.setEnabled(false);
+                break;
+            case 2:
+                jmUsuario.setEnabled(false);
+                jmAdmin.setEnabled(false);
+                break;
+        }
+    }
 }

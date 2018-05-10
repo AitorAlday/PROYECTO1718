@@ -249,6 +249,8 @@ public class VPersonas extends javax.swing.JFrame {
                     proyecto.Proyecto.modificarPersona(tfDni.getText(), tfNombre.getText(), cbTipo.getSelectedIndex());
                 }
             }
+            
+            //crearUsuario();
         }
         catch(Exception e){
             System.out.println(e.getMessage());

@@ -24,7 +24,7 @@ public class Proyecto {
     public static VJugador vJ;
     public static VPersonas vPer;
     
-    
+    public static Persona per;
     
     public static void main(String[] args) {
         
