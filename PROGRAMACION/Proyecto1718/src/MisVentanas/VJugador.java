@@ -6,6 +6,7 @@
 package MisVentanas;
 
 import MisClases.Equipo;
+import MisClases.Jugador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -44,6 +45,7 @@ public class VJugador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabels = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -83,7 +85,13 @@ public class VJugador extends javax.swing.JFrame {
         });
 
         bVolver.setText("Volver");
+        bVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVolverActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(rbBorrar);
         rbBorrar.setText("Borrar");
         rbBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +99,7 @@ public class VJugador extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(rbCrear);
         rbCrear.setText("Crear");
         rbCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +107,7 @@ public class VJugador extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(rbEditar);
         rbEditar.setText("Editar");
         rbEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,13 +239,21 @@ public class VJugador extends javax.swing.JFrame {
     }//GEN-LAST:event_rbCrearActionPerformed
 
     private void bBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarActionPerformed
-        
+        try {
+            Jugador j = proyecto.Proyecto.buscarJugadorDNI(tfDni.getText());
+            tfNick.setText(j.getNick());
+            tfNombre.setText(j.getNombre());
+            tfSueldo.setText(j.getSueldo().toString());
+            cbEquipo.setSelectedIndex(proyecto.Proyecto.buscarEquipoEditarJugador(j));
+        } catch (Exception e) {
+            
+        }
     }//GEN-LAST:event_bBuscarActionPerformed
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
             if(rbBorrar.isSelected()){
-                proyecto.Proyecto.borrarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()), cbEquipo.getSelectedIndex());//Preguntar como coger el idequipo
+                proyecto.Proyecto.borrarJugador(tfDni.getText(), tfNick.getText(), tfNombre.getText(), Double.parseDouble(tfSueldo.getText()), cbEquipo.getSelectedIndex());
                 tfDni.setText("");
                 tfNick.setText("");
                 tfNombre.setText("");
@@ -258,6 +276,10 @@ public class VJugador extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_bAceptarActionPerformed
+
+    private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
+        proyecto.Proyecto.abrirPrincipal();
+    }//GEN-LAST:event_bVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,6 +324,7 @@ public class VJugador extends javax.swing.JFrame {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bVolver;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbEquipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -319,9 +342,12 @@ public class VJugador extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void rellenarCb() {
-        proyecto.Proyecto.buscarParaRellenar();
-        for(int x = 0; x<e.size(); x++){
-            cbEquipo.insertItemAt();
+        try{
+            proyecto.Proyecto.buscarParaRellenar(cbEquipo);
         }
+        catch(Exception e){
+            
+        }
+        
     }
 }

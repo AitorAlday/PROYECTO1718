@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import MisVentanas.*;
 import MisClases.*;
 import MisClasesBD.*;
+import static MisVentanas.VJugador.e;
 import java.sql.Date;
 import java.util.ArrayList;
 /**
@@ -25,6 +26,8 @@ public class Proyecto {
     public static VPersonas vPer;
     
     public static Persona per;
+    
+    public static ArrayList <Equipo> lista;
     
     public static void main(String[] args) {
         
@@ -166,13 +169,13 @@ public class Proyecto {
         // </editor-fold>
     
         // <editor-fold defaultstate="collapsed" desc="JUGADOR">
-        public static void insertarJugador(String dni, String nick, String nombre, Double sueldo, Equipo e) throws Exception{
-            Jugador j = new Jugador(dni, nick, nombre, sueldo, e);
+        public static void insertarJugador(String dni, String nick, String nombre, Double sueldo, Integer e) throws Exception{
+            Jugador j = new Jugador(dni, nick, nombre, sueldo, lista.get(e));
             JugadorBD.insertarJugador(j);
         }
         
-        public static void borrarJugador(String dni, String nick, String nombre, Double sueldo, Equipo e) throws Exception{
-            Jugador j = new Jugador( dni, nick, nombre, sueldo, e);
+        public static void borrarJugador(String dni, String nick, String nombre, Double sueldo, Integer e) throws Exception{
+            Jugador j = new Jugador( dni, nick, nombre, sueldo, lista.get(e));
             JugadorBD.borrarJugador(j);
         }
         
@@ -209,13 +212,30 @@ public class Proyecto {
         public static Equipo buscarEquipoRef(String ref)throws Exception{
             return EquipoBD.buscarEquipo(ref);
         }
-        public static Equipo buscarParaRellenar(String nombre) throws Exception{
+        
+        public static Equipo buscarEquipoId(String id)throws Exception{
+            return EquipoBD.buscarEquipoId(id);
+        }
+        
+        public static void buscarParaRellenar(javax.swing.JComboBox cbEquipo) throws Exception{
+            lista = EquipoBD.buscarParaCb();
             
-            return EquipoBD.buscarParaCb(nombre);
+            for(int x = 0; x<lista.size(); x++){
+                cbEquipo.addItem(lista.get(x).getNombre());            
+            }
         }
         
         public static void toVEquipo(String mensaje){
             vE.mostrarMensaje(mensaje);
+        }
+        
+        public static Integer buscarEquipoEditarJugador(Jugador j) throws Exception{
+            for(int k =0;k<lista.size();k++){
+                if(lista.get(k).getNombre().equalsIgnoreCase(j.getEquipo().getNombre())){
+                    return k;
+                }
+            }
+            return null;
         }
         // </editor-fold>
         

@@ -31,7 +31,7 @@ public class EquipoBD {
             con.close();
         }
         catch(Exception e){
-            
+            System.out.println(e.getMessage());
         }
     }
     
@@ -88,18 +88,44 @@ public class EquipoBD {
             return null;
         }
     }
+    
+    public static Equipo buscarEquipoId(String id) throws Exception{
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("select * from Equipo where id_equipo=?");
+            sentencia.setString(1, id);
+            ResultSet resultado = sentencia.executeQuery();
+            if(resultado.next()){
+                Equipo eq = new Equipo(resultado.getString(2), resultado.getString(3)); //Para recoger la informacion de la base y crear un objeto con ella
+                con.close();
+                return eq;
+            }
+            else{
+                con.close();
+                return null;
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 
-    public static ArrayList buscarParaCb(String nombre) throws Exception{
+
+    public static ArrayList buscarParaCb() throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try{
             PreparedStatement sentencia = con.prepareStatement("select * from Equipo");
-            sentencia.setString(1, nombre);
             ResultSet resultado = sentencia.executeQuery();
             ArrayList <Equipo> lista = new ArrayList();
             
             while(resultado.next()){
-                Equipo e=new Equipo(resultado.getInt(1),resultado.getString(2));
+                Equipo e = new Equipo();
+                e.setIdEquipo(resultado.getInt(1));
+                e.setRef(resultado.getString(2));
+                e.setNombre(resultado.getString(3));
                 lista.add(e);
             }
             return lista;

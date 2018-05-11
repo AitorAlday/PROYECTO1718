@@ -44,6 +44,17 @@ public class Jugador {
         this.sueldo = sueldo;
     }
 
+    public Jugador(Integer idJugador, String dni, String nombre, String nick, Double sueldo, Equipo equipo) {
+        this.idJugador = idJugador;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.nick = nick;
+        this.sueldo = sueldo;
+        this.equipo = equipo;
+    }
+    
+    
+
     public Jugador() {
     }
 
