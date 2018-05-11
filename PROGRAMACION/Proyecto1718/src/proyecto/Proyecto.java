@@ -12,6 +12,7 @@ import MisClasesBD.*;
 import static MisVentanas.VJugador.e;
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 /**
  *
  * @author Aitor Alday
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 public class Proyecto {
 
     public static DLogin dL;
-    public static NewJFrame fondo;
     public static VPrincipal vP;
     public static VEquipos vE;
     public static VJugador vJ;
@@ -30,8 +30,11 @@ public class Proyecto {
     public static ArrayList <Equipo> lista;
     
     public static void main(String[] args) {
+        vP = new VPrincipal();
+        vP.setVisible(true);
+        vP.setLocationRelativeTo(null);
         
-        dL = new DLogin(fondo, true);
+        dL = new DLogin(vP, true);
         dL.setVisible(true);
         
     }
@@ -48,6 +51,7 @@ public class Proyecto {
         vP.setLocationRelativeTo(null);
         
         dL.dispose();
+        vP.dispose();
     }
     
     // <editor-fold defaultstate="collapsed" desc="Abrir ventanas">
@@ -241,6 +245,14 @@ public class Proyecto {
         
         // <editor-fold defaultstate="collapsed" desc="LIGA">
         
+        public static void iniciarParse() {
+            try {
+            DOMParserInforme.runExample(generarCalendario());
+            } catch (Exception e) {
+                toVPersona("Error mostrando partes: "+e.getMessage());
+            }
+        }
+        
         public static void generarCalendario(ArrayList <Equipo> e){
             try{
             /*Funcion basada en el algoritmo Round Robin para la conmutacion a pares*/
@@ -304,9 +316,14 @@ public class Proyecto {
             
             System.out.println(contador);
             
-        }catch(Exception ex){}
+            }
+            catch(Exception ex){
+            
+            }
+            
+        }
         // </editor-fold>
         
-    // </editor-fold>
-    }
+    // </editor-fold
 }
+
