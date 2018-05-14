@@ -54,9 +54,9 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jmDuenio = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        miBorrarEq = new javax.swing.JMenuItem();
+        miModEq = new javax.swing.JMenuItem();
+        miNuevoEq = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jmAdmin = new javax.swing.JMenu();
@@ -93,19 +93,24 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jMenu4.setText("Gestionar equipos");
 
-        jMenuItem6.setText("Eliminar Equipo");
-        jMenu4.add(jMenuItem6);
-
-        jMenuItem7.setText("Modificar Equipos");
-        jMenu4.add(jMenuItem7);
-
-        jMenuItem2.setText("Nuevo Equipo");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        miBorrarEq.setText("Eliminar Equipo");
+        miBorrarEq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                miBorrarEqActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem2);
+        jMenu4.add(miBorrarEq);
+
+        miModEq.setText("Modificar Equipos");
+        jMenu4.add(miModEq);
+
+        miNuevoEq.setText("Nuevo Equipo");
+        miNuevoEq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miNuevoEqActionPerformed(evt);
+            }
+        });
+        jMenu4.add(miNuevoEq);
 
         jmDuenio.add(jMenu4);
 
@@ -174,9 +179,9 @@ public class VPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void miNuevoEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNuevoEqActionPerformed
         
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_miNuevoEqActionPerformed
 
     private void miJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miJugadorActionPerformed
         proyecto.Proyecto.abrirJugador();
@@ -189,6 +194,10 @@ public class VPrincipal extends javax.swing.JFrame {
     private void miPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPersonaActionPerformed
         proyecto.Proyecto.abrirPersona();
     }//GEN-LAST:event_miPersonaActionPerformed
+
+    private void miBorrarEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miBorrarEqActionPerformed
+        
+    }//GEN-LAST:event_miBorrarEqActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,19 +245,19 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenu jmAdmin;
     private javax.swing.JMenu jmDuenio;
     private javax.swing.JMenu jmUsuario;
+    private javax.swing.JMenuItem miBorrarEq;
     private javax.swing.JMenuItem miEquipo;
     private javax.swing.JMenuItem miJugador;
+    private javax.swing.JMenuItem miModEq;
+    private javax.swing.JMenuItem miNuevoEq;
     private javax.swing.JMenuItem miPersona;
     // End of variables declaration//GEN-END:variables
 

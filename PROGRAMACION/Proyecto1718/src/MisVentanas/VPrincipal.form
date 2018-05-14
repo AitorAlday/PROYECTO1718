@@ -65,22 +65,25 @@
                 <Property name="text" type="java.lang.String" value="Gestionar equipos"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
+                <MenuItem class="javax.swing.JMenuItem" name="miBorrarEq">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Eliminar Equipo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miBorrarEqActionPerformed"/>
+                  </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem7">
+                <MenuItem class="javax.swing.JMenuItem" name="miModEq">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Modificar Equipos"/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                <MenuItem class="javax.swing.JMenuItem" name="miNuevoEq">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Nuevo Equipo"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="miNuevoEqActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

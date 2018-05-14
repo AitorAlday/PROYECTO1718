@@ -46,6 +46,7 @@ public class VJugador extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabels = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -325,6 +326,7 @@ public class VJugador extends javax.swing.JFrame {
     private javax.swing.JButton bBuscar;
     private javax.swing.JButton bVolver;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbEquipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
