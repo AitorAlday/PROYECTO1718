@@ -72,6 +72,7 @@ public class Proyecto {
         vE.setVisible(true);
         vE.setLocationRelativeTo(null);
     }
+    
     public static void abrirEquipos(char opt){
         vE = new VEquipos(opt);
         vE.setVisible(true);
@@ -83,6 +84,7 @@ public class Proyecto {
         vP.setVisible(true);
         vP.setLocationRelativeTo(vP);
     }
+    
     public static void abrirPrincipal(int tipo){
         vP = new VPrincipal(tipo);
         vP.setVisible(true);
@@ -245,13 +247,13 @@ public class Proyecto {
         
         // <editor-fold defaultstate="collapsed" desc="LIGA">
         
-        public static void iniciarParse() {
+        /*public static void iniciarParse() {
             try {
             DOMParserInforme.runExample(generarCalendario());
             } catch (Exception e) {
                 toVPersona("Error mostrando partes: "+e.getMessage());
             }
-        }
+        }*/
         
         public static void generarCalendario(ArrayList <Equipo> e){
             try{
@@ -324,6 +326,6 @@ public class Proyecto {
         }
         // </editor-fold>
         
-    // </editor-fold
+    // </editor-fold>
 }
 

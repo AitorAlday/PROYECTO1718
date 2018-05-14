@@ -30,7 +30,7 @@ public class LoginBD {
             con=gbd.abrirConexion(con);
             String nombre = login.getUsuario();
             String contrasenya = login.getContrasena();
-            PreparedStatement sentencia = gbd.abrirConexion(con).prepareStatement("SELECT id_persona, nombre, usuario, contrasena, tipo, id_equipo FROM persona WHERE usuario=? AND contrasena=?");
+            PreparedStatement sentencia = gbd.abrirConexion(con).prepareStatement("SELECT p.id_persona, p.nombre, p.tipo, p.id_equipo, l.usuario, l.contraseña FROM persona p, login l WHERE l.id_persona=p.id_persona AND usuario=? AND contrasena=?");
             sentencia.setString(1, nombre);
             sentencia.setString(2, contrasenya);
             ResultSet resultado = sentencia.executeQuery();
@@ -97,13 +97,13 @@ public class LoginBD {
         }
     }
     
-    public static void borrarLogin(String dni) throws Exception{
+    public static void borrarLogin(String usu) throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try {
             gbd = new GenericoBD();
-            PreparedStatement ps = con.prepareStatement("delete from login where dni=?");
-            ps.setString(1, dni);
+            PreparedStatement ps = con.prepareStatement("delete from login where usuario=?");
+            ps.setString(1, usu);
             ps.executeUpdate();
             
             con.close();
