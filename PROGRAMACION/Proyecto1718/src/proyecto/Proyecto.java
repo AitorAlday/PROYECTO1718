@@ -254,6 +254,7 @@ public class Proyecto {
                 toVPersona("Error mostrando partes: "+e.getMessage());
             }
         }*/
+        
         public static void generarCalendario(ArrayList <Equipo> e){
             try{
             /*Funcion basada en el algoritmo Round Robin para la conmutacion a pares*/
