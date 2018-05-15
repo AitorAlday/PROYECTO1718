@@ -247,6 +247,7 @@ public class Proyecto {
         
         // <editor-fold defaultstate="collapsed" desc="LIGA">
         
+<<<<<<< Updated upstream
         /*public static void iniciarParse() {
             try {
             DOMParserInforme.runExample(generarCalendario());
@@ -255,6 +256,8 @@ public class Proyecto {
             }
         }*/
         
+=======
+>>>>>>> Stashed changes
         public static void generarCalendario(ArrayList <Equipo> e){
             try{
             /*Funcion basada en el algoritmo Round Robin para la conmutacion a pares*/

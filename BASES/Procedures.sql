@@ -3,6 +3,7 @@ SET serveroutput ON;
 
 --CABECERA DEL PAQUETE
 CREATE OR REPLACE PACKAGE Proyecto1718 IS
+<<<<<<< Updated upstream
   PROCEDURE buscarEquipoEntero (v_id e.id_equipo%type, v_equipo OUT e.nombre%type , v_jugador OUT j.nombre%type);
 END Proyecto1718;  
 
@@ -15,10 +16,6 @@ CREATE OR REPLACE PACKAGE BODY Proyecto1718 IS
     INTO v_equipo, v_jugador
     FROM equipo e, jugador j
     WHERE e.id_equipo=j.id_equipo;
-  EXCEPTION 
-    WHEN OTHERS THEN 
-      RAISE_APPLICATION_ERROR (-20100, 'ERROR INESPERADO AL GENERAR EL LOGIN - USUARIO/CONTRASEÑA: '|| SQLERRM);
-  END generarLogin;
-END Proyecto1718;
-
+=======
+ 
 
