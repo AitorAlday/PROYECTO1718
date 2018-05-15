@@ -22,15 +22,15 @@ public class LoginBD {
     private static Connection con;
     
     
-    public static Persona logearUsuario(Login login) {
-        //Utilizamos unuario y nombre para logear a un usuario.
+    public static Persona logearUsuario(Login login) throws Exception{
+        //Utilizamos usuario y nombre para logear a un usuario.
          Persona user =new Persona();
+         GenericoBD gbd = new GenericoBD();
+         con=gbd.abrirConexion(con);
         try {
-            GenericoBD gbd = new GenericoBD();
-            con=gbd.abrirConexion(con);
             String nombre = login.getUsuario();
             String contrasenya = login.getContrasena();
-            PreparedStatement sentencia = gbd.abrirConexion(con).prepareStatement("SELECT p.id_persona, p.nombre, p.tipo, p.id_equipo, l.usuario, l.contraseña FROM persona p, login l WHERE l.id_persona=p.id_persona AND usuario=? AND contrasena=?");
+            PreparedStatement sentencia = gbd.abrirConexion(con).prepareStatement("SELECT p.id_persona, p.nombre, p.tipo, p.id_equipo, l.usuario, l.contraseña FROM persona p, login l WHERE l.id_persona=p.id_persona AND usuario=? AND contraseña=?");
             sentencia.setString(1, nombre);
             sentencia.setString(2, contrasenya);
             ResultSet resultado = sentencia.executeQuery();

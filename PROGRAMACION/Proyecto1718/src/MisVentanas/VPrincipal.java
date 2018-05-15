@@ -21,7 +21,7 @@ public class VPrincipal extends javax.swing.JFrame {
         
         habilitarModo(tipo);
         
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
     }
     public VPrincipal() {
         initComponents();

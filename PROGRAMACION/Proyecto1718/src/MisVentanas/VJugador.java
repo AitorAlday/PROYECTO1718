@@ -279,7 +279,7 @@ public class VJugador extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
-        proyecto.Proyecto.abrirPrincipal();
+        this.dispose();
     }//GEN-LAST:event_bVolverActionPerformed
 
     /**

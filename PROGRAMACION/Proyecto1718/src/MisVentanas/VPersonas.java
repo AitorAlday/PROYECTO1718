@@ -249,8 +249,6 @@ public class VPersonas extends javax.swing.JFrame {
                     proyecto.Proyecto.modificarPersona(tfDni.getText(), tfNombre.getText(), cbTipo.getSelectedIndex());
                 }
             }
-            
-            //crearUsuario();
         }
         catch(Exception e){
             System.out.println(e.getMessage());
@@ -259,9 +257,6 @@ public class VPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
-        vP = new VPrincipal();
-        vP.setVisible(true);
-        vP.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_bVolverActionPerformed
 

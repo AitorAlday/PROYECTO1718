@@ -21,6 +21,7 @@ public class Proyecto {
 
     public static DLogin dL;
     public static VPrincipal vP;
+    public static VPrincipal vP1;
     public static VEquipos vE;
     public static VJugador vJ;
     public static VPersonas vPer;
@@ -86,9 +87,9 @@ public class Proyecto {
     }
     
     public static void abrirPrincipal(int tipo){
-        vP = new VPrincipal(tipo);
-        vP.setVisible(true);
-        vP.setLocationRelativeTo(vP);
+        vP1 = new VPrincipal(tipo);
+        vP1.setVisible(true);
+        vP1.setLocationRelativeTo(null);
     }
     // </editor-fold>
     
@@ -119,9 +120,6 @@ public class Proyecto {
      * @param usuario El usuario con el que te logeas
      * @param contraseña La contraseña con la que te logeas
      */ 
-    public static void crearUsuario(String usuario, String contra) throws Exception{
-        
-    }
     public static void login(String usuario, String contra) throws Exception{
         Login l = new Login(usuario, contra);
         LoginBD lo = new LoginBD();
@@ -132,9 +130,11 @@ public class Proyecto {
            JOptionPane.showMessageDialog(null, "Usuario logeado: " + user.getNombre() + user.getTipo()); 
            
             abrirPrincipal(user.getTipo());
-               
+            dL.dispose();
+            vP.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Usuario incorrecto");
+            dL.contaErrores();
         }
           
     }
