@@ -23,8 +23,8 @@ public class JornadaBD {
         con = gbd.abrirConexion(con);
         
         try{
-            PreparedStatement sentencia = con.prepareStatement("insert into Jornada values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            sentencia.setInt(1, j.getIdJornada());
+            PreparedStatement sentencia = con.prepareStatement("insert into Jornada(id_temporada,fec_ini,fec_fin) values (?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            sentencia.setInt(1, j.getTemporada().getIdTemporada());
             sentencia.setDate(2, j.getFecIni());
             sentencia.setDate(3, j.getFecFin());
            int id= sentencia.executeUpdate();

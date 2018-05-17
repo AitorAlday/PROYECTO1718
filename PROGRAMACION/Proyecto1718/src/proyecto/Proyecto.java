@@ -258,15 +258,22 @@ public class Proyecto {
             }
         }*/
         
-        public static void generarCalendario(ArrayList <Equipo> e){
+        public static void generarCalendario(int ano){
             try{
-            /*Funcion basada en el algoritmo Round Robin para la conmutacion a pares*/
+            
+            EquipoBD ebd=new EquipoBD();
+            ArrayList<Equipo> locales=new ArrayList <Equipo>();
+            locales=ebd.buscarParaCb();
             JornadaBD jb =new JornadaBD();
             PartidoBD pb =new PartidoBD();
+            Temporada t=new Temporada();
+            TemporadaBD tbd=new TemporadaBD();
             Equipo eq = new Equipo();
             Date fecha=new Date(1,1,1);
             
-            ArrayList <Equipo> locales = new ArrayList <Equipo> ();
+            t.setAnio(ano);
+            int id=tbd.insertarTemporada(t);
+            t.setIdTemporada(id);
             ArrayList <Equipo> visitantes = new ArrayList <Equipo> ();
             
             
@@ -290,6 +297,7 @@ public class Proyecto {
             for(int y=0;y<jornadas*2;y++){
                 System.out.println("----Jornada " + (y + 1) + "----");
                 Jornada jor=new Jornada();
+                jor.setTemporada(t);
                 jor.setFecIni(fecha);
                 jor.setFecFin(fecha);
                 int idjornada=jb.insertarJornada(jor);
@@ -304,6 +312,7 @@ public class Proyecto {
                 
                 for(int i=0; i<locales.size(); i++){
                     Partido par =new Partido();
+                    
                     par.setFecha(fecha);
                     par.setLocal(locales.get(i));
                     par.setVisitante(visitantes.get(i+1));

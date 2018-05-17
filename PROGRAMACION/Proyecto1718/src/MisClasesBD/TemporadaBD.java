@@ -8,6 +8,7 @@ package MisClasesBD;
 import MisClases.Temporada;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 /**
  *
  * @author Aitor Alday
@@ -16,18 +17,20 @@ public class TemporadaBD {
     
     private static Connection con;
     
-    public static void insertarTemporada(Temporada t) throws Exception{
+    public static int insertarTemporada(Temporada t) throws Exception{
        GenericoBD gbd = new GenericoBD();
        con = gbd.abrirConexion(con);
        try{
-           PreparedStatement sentencia = con.prepareStatement("insert into Temporada(año) values (?)");
+           PreparedStatement sentencia = con.prepareStatement("insert into Temporada(año) values (?)",Statement.RETURN_GENERATED_KEYS);
            sentencia.setInt(1, t.getAnio());
            
-           sentencia.executeUpdate();
+           int id=sentencia.executeUpdate();
 
            con.close();
+           return id;
        }
        catch(Exception e){
+           return 0;
 
        }
     }

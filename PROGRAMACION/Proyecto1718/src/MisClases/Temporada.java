@@ -5,10 +5,7 @@
  */
 package MisClases;
 import java.util.ArrayList;
-/**
- *
- * @author Estíbaliz
- */
+
 public class Temporada {
     private Integer idTemporada;
     private Integer anio;

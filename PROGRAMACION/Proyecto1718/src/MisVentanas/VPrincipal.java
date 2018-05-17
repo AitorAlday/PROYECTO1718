@@ -188,6 +188,9 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_miGestionEqActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+      
+          int ano=  Integer.parseInt(javax.swing.JOptionPane.showInputDialog(null,"año de la temporada"));
+            proyecto.Proyecto.generarCalendario(ano);
         
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
