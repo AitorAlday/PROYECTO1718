@@ -21,6 +21,7 @@ public class VPersonas extends javax.swing.JFrame {
     
     public VPersonas() {
         initComponents();
+        rbBorrar.setSelected(true);
     }
     
     public VPersonas(char opcion){

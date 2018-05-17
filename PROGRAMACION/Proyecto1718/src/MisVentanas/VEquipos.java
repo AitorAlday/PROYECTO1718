@@ -17,6 +17,7 @@ public class VEquipos extends javax.swing.JFrame {
     public static VPrincipal vP;
     public VEquipos() {
         initComponents();
+        rbBorrar.setSelected(true);
     }
     public VEquipos(char opcion) {
         initComponents();

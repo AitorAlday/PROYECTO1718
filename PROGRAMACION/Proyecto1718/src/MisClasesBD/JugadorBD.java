@@ -22,12 +22,11 @@ public class JugadorBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try{
-            PreparedStatement sentencia = con.prepareStatement("insert into Jugador(dni, nickname, nombre, sueldo, id_equipo) values (?,?,?,?,?)");
+            PreparedStatement sentencia = con.prepareStatement("insert into Jugador(dni, nickname, nombre, sueldo) values (?,?,?,?)");
             sentencia.setString(1, j.getDni());
             sentencia.setString(2, j.getNick());
             sentencia.setString(3, j.getNombre());
             sentencia.setDouble(4, j.getSueldo());
-            sentencia.setInt(5, j.getEquipo().getIdEquipo());
             sentencia.executeUpdate();
             
             con.close();
@@ -41,12 +40,11 @@ public class JugadorBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
          try{
-            PreparedStatement sentencia = con.prepareStatement("update Jugador set id_jugador=?, dni=? nickname=? nombre=?, sueldo=? where id_jugador=?");
-            sentencia.setInt(1, j.getIdJugador());
-            sentencia.setString(2, j.getDni());
-            sentencia.setString(3, j.getNick());
-            sentencia.setString(4, j.getNombre());
-            sentencia.setDouble(5, j.getSueldo());
+            PreparedStatement sentencia = con.prepareStatement("update Jugador set dni=?, nickname=?, nombre=?, sueldo=? where dni=?");
+            sentencia.setString(1, j.getDni());
+            sentencia.setString(2, j.getNick());
+            sentencia.setString(3, j.getNombre());
+            sentencia.setDouble(4, j.getSueldo());
             sentencia.executeUpdate();
             
             con.close();
@@ -93,6 +91,21 @@ public class JugadorBD {
         catch(Exception e){
             System.out.println(e.getMessage());
             return null;
+        }
+    }
+    
+    public static void dueñoCreaEquipo(Jugador j) throws Exception {
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("update Jugador set id_equipo=? where nombre=?");
+            sentencia.setString(1, j.getEquipo().getNombre());
+            sentencia.executeUpdate();
+            
+            con.close();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 }

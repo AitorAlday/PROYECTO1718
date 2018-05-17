@@ -11,8 +11,7 @@ END Proyecto1718;
 CREATE OR REPLACE PACKAGE BODY Proyecto1718 IS
   PROCEDURE buscarEquipoEntero (v_id e.id_equipo%type, v_equipo OUT e.nombre%type , v_jugador OUT j.nombre%type) AS
 BEGIN 
-    SELECT e.nombre, j.nombre
-    INTO v_equipo, v_jugador
+    SELECT e.nombre, j.nombre INTO v_equipo, v_jugador
     FROM equipo e, jugador j
     WHERE e.id_equipo=j.id_equipo
 END Proyecto1718;

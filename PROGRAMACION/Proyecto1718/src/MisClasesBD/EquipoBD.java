@@ -135,4 +135,20 @@ public class EquipoBD {
             return null;
         }
     }
+    
+    public static void crearEquipoDueño(Equipo eq) throws Exception{
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("insert into Equipo(nombre, id_jugador) values (?, ?)");
+            sentencia.setString(1, eq.getRef());
+            sentencia.setObject(2, eq.getJugadores());
+            sentencia.executeUpdate();
+            
+            con.close();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -52,6 +52,10 @@ public class Jugador {
         this.sueldo = sueldo;
         this.equipo = equipo;
     }
+
+    public Jugador(Equipo equipo) {
+        this.equipo = equipo;
+    }
     
     
 

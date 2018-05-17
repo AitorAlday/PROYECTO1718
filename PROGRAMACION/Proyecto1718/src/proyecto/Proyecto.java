@@ -23,6 +23,7 @@ public class Proyecto {
     public static VPrincipal vP;
     public static VPrincipal vP1;
     public static VEquipos vE;
+    public static VEquiposDu vE2;
     public static VJugador vJ;
     public static VPersonas vPer;
     
@@ -31,31 +32,23 @@ public class Proyecto {
     public static ArrayList <Equipo> lista;
     
     public static void main(String[] args) {
-        vP = new VPrincipal();
-        vP.setVisible(true);
-        vP.setLocationRelativeTo(null);
-        
-        dL = new DLogin(vP, true);
-        dL.setVisible(true);
-        
+        iniciarProyecto();
     }
     
     public static void cerrarProyecto() {
         System.exit(0);
     }
     
-    /*ESTE ES EL INICIO DE LOGIN DEL ADMINISTRADOR, QUE LO TENDRÁ TODO ACTIVADO Y HAY QUE INICIAR EL PROGRAMA POR
-    PRIMERA VEZ PARA CREAR UN ADMINISTRADOR; DUEÑO Y USUARIO*/
-    public static void inicioRoot() {
+    // <editor-fold defaultstate="collapsed" desc="Abrir ventanas">
+    public static void iniciarProyecto(){
         vP = new VPrincipal();
         vP.setVisible(true);
         vP.setLocationRelativeTo(null);
         
-        dL.dispose();
-        vP.dispose();
+        dL = new DLogin(vP, true);
+        dL.setVisible(true);
     }
     
-    // <editor-fold defaultstate="collapsed" desc="Abrir ventanas">
     public static void abrirPersona(){
         vPer = new VPersonas();
         vPer.setVisible(true);
@@ -78,6 +71,12 @@ public class Proyecto {
         vE = new VEquipos(opt);
         vE.setVisible(true);
         vE.setLocationRelativeTo(null);
+    }
+    
+    public static void abrirEquipoDueño(){
+        vE2 = new VEquiposDu();
+        vE2.setVisible(true);
+        vE2.setLocationRelativeTo(null);
     }
     
     public static void abrirPrincipal(){
@@ -142,6 +141,16 @@ public class Proyecto {
     public static void cerrarLogin() {
        System.exit(0);
     }
+    /*ESTE ES EL INICIO DE LOGIN DEL ADMINISTRADOR, QUE LO TENDRÁ TODO ACTIVADO Y HAY QUE INICIAR EL PROGRAMA POR
+    PRIMERA VEZ PARA CREAR UN ADMINISTRADOR; DUEÑO Y USUARIO*/
+    public static void inicioRoot() {
+        vP = new VPrincipal();
+        vP.setVisible(true);
+        vP.setLocationRelativeTo(null);
+        
+        dL.dispose();
+        vP.dispose();
+    }
     
     public static void toDLogin(String mensaje) {
         dL.mostrarMensaje(mensaje);
@@ -175,19 +184,19 @@ public class Proyecto {
         // </editor-fold>
     
         // <editor-fold defaultstate="collapsed" desc="JUGADOR">
-        public static void insertarJugador(String dni, String nick, String nombre, Double sueldo, Integer e) throws Exception{
-            Jugador j = new Jugador(dni, nick, nombre, sueldo, lista.get(e));
+        public static void insertarJugador(String dni, String nick, String nombre, Double sueldo) throws Exception{
+            Jugador j = new Jugador(dni, nick, nombre, sueldo);
             JugadorBD.insertarJugador(j);
         }
         
-        public static void borrarJugador(String dni, String nick, String nombre, Double sueldo, Integer e) throws Exception{
-            Jugador j = new Jugador( dni, nick, nombre, sueldo, lista.get(e));
+        public static void borrarJugador(String dni, String nick, String nombre, Double sueldo) throws Exception{
+            Jugador j = new Jugador( dni, nick, nombre, sueldo);
             JugadorBD.borrarJugador(j);
         }
         
         public static void modificarJugador(String dni, String nick, String nombre, Double sueldo) throws Exception{
             Jugador j = new Jugador(dni, nick, nombre, sueldo);
-            JugadorBD.borrarJugador(j);
+            JugadorBD.actualizarJugador(j);
         }
         
         public static Jugador buscarJugadorDNI(String dni) throws Exception{
@@ -324,6 +333,17 @@ public class Proyecto {
             }
             
         }
+        // </editor-fold>
+        
+    // </editor-fold>
+        
+    // <editor-fold defaultstate="collapsed" desc="Para dueño">  
+        
+        // <editor-fold defaultstate="collapsed" desc="Gestion de equipos">   
+            public static void insertarEquipoDueño(Equipo eq) throws Exception{
+                Jugador j = new Jugador(eq);
+                JugadorBD.dueñoCreaEquipo(j);
+            }
         // </editor-fold>
         
     // </editor-fold>
