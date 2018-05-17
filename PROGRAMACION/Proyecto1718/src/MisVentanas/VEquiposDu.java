@@ -21,6 +21,7 @@ public class VEquiposDu extends javax.swing.JFrame {
         rbBorrar.setSelected(true);
         
         rellenarCb();
+        rellenarLista();
     }
 
     /**
@@ -41,7 +42,6 @@ public class VEquiposDu extends javax.swing.JFrame {
         cbNombre = new javax.swing.JComboBox<>();
         rbBorrar = new javax.swing.JRadioButton();
         rbCrear = new javax.swing.JRadioButton();
-        rbEditar = new javax.swing.JRadioButton();
         bAceptar = new javax.swing.JButton();
         bVolver = new javax.swing.JButton();
         bBuscar = new javax.swing.JButton();
@@ -58,13 +58,10 @@ public class VEquiposDu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jlJugadores);
 
         buttonGroup1.add(rbBorrar);
-        rbBorrar.setText("Borrar");
+        rbBorrar.setText("Sacar");
 
         buttonGroup1.add(rbCrear);
-        rbCrear.setText("Crear");
-
-        buttonGroup1.add(rbEditar);
-        rbEditar.setText("Editar");
+        rbCrear.setText("Meter");
 
         bAceptar.setText("Aceptar");
         bAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,26 +102,23 @@ public class VEquiposDu extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(cbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(rbBorrar)
+                        .addComponent(rbCrear))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbBorrar)
-                            .addComponent(rbCrear)
-                            .addComponent(rbEditar))
-                        .addGap(106, 106, 106))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(bBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bAceptar)
+                            .addComponent(bVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)))
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel1)
@@ -134,22 +128,20 @@ public class VEquiposDu extends javax.swing.JFrame {
                             .addComponent(cbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(rbBorrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rbCrear)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(71, 71, 71)
                         .addComponent(bAceptar)
-                        .addGap(18, 18, 18)
-                        .addComponent(bBuscar)))
-                .addGap(18, 18, 18)
-                .addComponent(bVolver)
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bVolver)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,7 +158,7 @@ public class VEquiposDu extends javax.swing.JFrame {
             }
             else{
                 if(rbCrear.isSelected()){
-                    proyecto.Proyecto.dueñoCreaEquipo(cbNombre.getSelectedItem());
+                    proyecto.Proyecto.dueñoCreaEquipo((String)cbNombre.getSelectedItem(), jlJugadores.getSelectedValue());
                 }
                 else{
                     
@@ -236,12 +228,20 @@ public class VEquiposDu extends javax.swing.JFrame {
     private javax.swing.JList<String> jlJugadores;
     private javax.swing.JRadioButton rbBorrar;
     private javax.swing.JRadioButton rbCrear;
-    private javax.swing.JRadioButton rbEditar;
     // End of variables declaration//GEN-END:variables
 
     private void rellenarCb() {
         try{
             proyecto.Proyecto.buscarParaRellenar(cbNombre);
+        }
+        catch(Exception e){
+            
+        }
+    }
+    
+    private void rellenarLista() {
+        try{
+            proyecto.Proyecto.buscarParaRellenarJu(jlJugadores);
         }
         catch(Exception e){
             

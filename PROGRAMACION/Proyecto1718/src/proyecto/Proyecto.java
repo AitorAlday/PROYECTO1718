@@ -12,6 +12,7 @@ import MisClasesBD.*;
 import static MisVentanas.VJugador.e;
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 /**
  *
@@ -29,7 +30,8 @@ public class Proyecto {
     
     public static Persona per;
     
-    public static ArrayList <Equipo> lista;
+    public static ArrayList <Equipo> listaEq;
+    public static ArrayList <Jugador> listaJu;
     
     public static void main(String[] args) {
         iniciarProyecto();
@@ -232,21 +234,13 @@ public class Proyecto {
             return EquipoBD.buscarEquipoId(id);
         }
         
-        public static void buscarParaRellenar(javax.swing.JComboBox cbEquipo) throws Exception{
-            lista = EquipoBD.buscarParaCb();
-            
-            for(int x = 0; x<lista.size(); x++){
-                cbEquipo.addItem(lista.get(x).getNombre());            
-            }
-        }
-        
         public static void toVEquipo(String mensaje){
             vE.mostrarMensaje(mensaje);
         }
         
         public static Integer buscarEquipoEditarJugador(Jugador j) throws Exception{
-            for(int k =0;k<lista.size();k++){
-                if(lista.get(k).getNombre().equalsIgnoreCase(j.getEquipo().getNombre())){
+            for(int k =0;k<listaEq.size();k++){
+                if(listaEq.get(k).getNombre().equalsIgnoreCase(j.getEquipo().getNombre())){
                     return k;
                 }
             }
@@ -340,9 +334,30 @@ public class Proyecto {
     // <editor-fold defaultstate="collapsed" desc="Para dueño">  
         
         // <editor-fold defaultstate="collapsed" desc="Gestion de equipos">   
-            public static void insertarEquipoDueño(String nombre) throws Exception{
-                Jugador j = new Jugador(nombre);
+            public static void dueñoCreaEquipo(String eq, String nombre) throws Exception{
+                Equipo eqq = EquipoBD.buscarEquipoPorNombre(eq);
+                Jugador j = JugadorBD.buscarJugadorPorNombre(nombre);
+                j.setEquipo(eqq);
                 JugadorBD.dueñoCreaEquipo(j);
+            }
+            
+            public static void buscarParaRellenar(javax.swing.JComboBox cbEquipo) throws Exception{
+                listaEq = EquipoBD.buscarParaCb();
+            
+                for(int x = 0; x<listaEq.size(); x++){
+                    cbEquipo.addItem(listaEq.get(x).getNombre());            
+                }
+            }
+            
+            public static void buscarParaRellenarJu(javax.swing.JList jlJugadores) throws Exception{
+                listaJu = JugadorBD.buscarParaLista();
+                DefaultListModel dlm = new DefaultListModel();
+                
+                for(int x = 0; x<listaJu.size(); x++){
+                    dlm.add(x, listaJu.get(x).getNombre());
+                }
+                
+                jlJugadores.setModel(dlm);
             }
         // </editor-fold>
         

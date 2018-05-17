@@ -132,6 +132,11 @@ public class VPrincipal extends javax.swing.JFrame {
         jmAdmin.add(miPersona);
 
         jMenuItem11.setText("Calendario");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jmAdmin.add(jMenuItem11);
 
         jMenuBar1.add(jmAdmin);
@@ -181,6 +186,10 @@ public class VPrincipal extends javax.swing.JFrame {
     private void miGestionEqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGestionEqActionPerformed
         proyecto.Proyecto.abrirEquipoDueño();
     }//GEN-LAST:event_miGestionEqActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments

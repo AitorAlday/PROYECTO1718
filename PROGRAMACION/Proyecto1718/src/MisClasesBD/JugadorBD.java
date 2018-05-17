@@ -9,6 +9,7 @@ import MisClases.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,7 +33,7 @@ public class JugadorBD {
             con.close();
         }
         catch(Exception e){
-            System.out.println("ERRor");
+            System.out.println(e.getMessage());
         }
     }
     
@@ -99,13 +100,66 @@ public class JugadorBD {
         con = gbd.abrirConexion(con);
         try{
             PreparedStatement sentencia = con.prepareStatement("update Jugador set id_equipo=? where nombre=?");
-            sentencia.setString(1, j.getEquipo().getNombre());
+            sentencia.setInt(1, j.getEquipo().getIdEquipo());//Equipo
+            sentencia.setString(2, j.getNombre());
             sentencia.executeUpdate();
             
             con.close();
         }
         catch(Exception e){
             System.out.println(e.getMessage());
+        }
+    }
+    
+    public static ArrayList buscarParaLista() throws Exception{
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("select * from Jugador");
+            ResultSet resultado = sentencia.executeQuery();
+            ArrayList <Jugador> lista = new ArrayList();
+            
+            while(resultado.next()){
+                Jugador j = new Jugador();
+                j.setIdJugador(resultado.getInt(1));
+                j.setDni(resultado.getString(2));
+                j.setNombre(resultado.getString(3));
+                j.setNick(resultado.getString(4));
+                j.setSueldo(resultado.getDouble(5));
+                lista.add(j);
+            }
+            return lista;
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
+    public static Jugador buscarJugadorPorNombre(String nombre) throws Exception{
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("select * from Jugador where nickname=?");
+            sentencia.setString(1, nombre);
+            ResultSet resultado = sentencia.executeQuery();
+            if(resultado.next()){
+                Jugador j = new Jugador(); //Para recoger la informacion de la base y crear un objeto con ella
+                j.setDni(resultado.getString(2));
+                j.setNick(resultado.getString(3));
+                j.setNombre(resultado.getString(4));
+                j.setSueldo(resultado.getDouble(5));
+                con.close();
+                return j;
+            }
+            else{
+                con.close();
+                return null;
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }

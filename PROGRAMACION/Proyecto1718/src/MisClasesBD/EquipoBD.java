@@ -136,6 +136,30 @@ public class EquipoBD {
         }
     }
     
+    public static Equipo buscarEquipoPorNombre(String nombre) throws Exception{
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("select * from Equipo where nombre=?");
+            sentencia.setString(1, nombre);
+            ResultSet resultado = sentencia.executeQuery();
+            if(resultado.next()){
+                Equipo eq = new Equipo(resultado.getString(3)); //Para recoger la informacion de la base y crear un objeto con ella
+                eq.setIdEquipo(resultado.getInt(1));
+                con.close();
+                return eq;
+            }
+            else{
+                con.close();
+                return null;
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    
     public static void crearEquipoDueño(Equipo eq) throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
