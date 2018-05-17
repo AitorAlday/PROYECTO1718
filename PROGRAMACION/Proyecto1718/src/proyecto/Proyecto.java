@@ -340,8 +340,8 @@ public class Proyecto {
     // <editor-fold defaultstate="collapsed" desc="Para dueño">  
         
         // <editor-fold defaultstate="collapsed" desc="Gestion de equipos">   
-            public static void insertarEquipoDueño(Equipo eq) throws Exception{
-                Jugador j = new Jugador(eq);
+            public static void insertarEquipoDueño(String nombre) throws Exception{
+                Jugador j = new Jugador(nombre);
                 JugadorBD.dueñoCreaEquipo(j);
             }
         // </editor-fold>

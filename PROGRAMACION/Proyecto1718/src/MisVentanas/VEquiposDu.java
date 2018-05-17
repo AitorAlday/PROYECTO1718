@@ -149,7 +149,7 @@ public class VEquiposDu extends javax.swing.JFrame {
                         .addComponent(bBuscar)))
                 .addGap(18, 18, 18)
                 .addComponent(bVolver)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,7 +166,7 @@ public class VEquiposDu extends javax.swing.JFrame {
             }
             else{
                 if(rbCrear.isSelected()){
-                    proyecto.Proyecto.insertarEquipoDueño(cbNombre.getSelectedItem(), jlJugadores.getSelectedValuesList());
+                    proyecto.Proyecto.dueñoCreaEquipo(cbNombre.getSelectedItem());
                 }
                 else{
                     

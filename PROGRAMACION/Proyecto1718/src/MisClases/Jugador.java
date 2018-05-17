@@ -57,8 +57,6 @@ public class Jugador {
         this.equipo = equipo;
     }
     
-    
-
     public Jugador() {
     }
 
