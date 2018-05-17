@@ -40,11 +40,10 @@ public class PersonaBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
          try{
-            PreparedStatement sentencia = con.prepareStatement("update Persona set dni=?, nombre=?, tipo=?, where dni=?");
-            sentencia.setString(1, p.getDni());
-            sentencia.setString(2, p.getNombre());
-            sentencia.setInt(3, p.getTipo());
-            sentencia.setString(4, p.getDni());
+            PreparedStatement sentencia = con.prepareStatement("update Persona set nombre=?, tipo=? where dni=?");
+            sentencia.setString(1, p.getNombre());
+            sentencia.setInt(2, p.getTipo());
+            sentencia.setString(3, p.getDni());
             sentencia.executeUpdate();
             
             con.close();
