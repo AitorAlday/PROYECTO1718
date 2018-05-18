@@ -41,11 +41,11 @@ public class JugadorBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
          try{
-            PreparedStatement sentencia = con.prepareStatement("update Jugador set dni=?, nickname=?, nombre=?, sueldo=? where dni=?");
-            sentencia.setString(1, j.getDni());
-            sentencia.setString(2, j.getNick());
-            sentencia.setString(3, j.getNombre());
-            sentencia.setDouble(4, j.getSueldo());
+            PreparedStatement sentencia = con.prepareStatement("update Jugador set nickname=?, nombre=?, sueldo=? where dni=?");
+            sentencia.setString(1, j.getNick());
+            sentencia.setString(2, j.getNombre());
+            sentencia.setDouble(3, j.getSueldo());
+            sentencia.setString(4, j.getDni());
             sentencia.executeUpdate();
             
             con.close();
@@ -59,8 +59,8 @@ public class JugadorBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try {
-            PreparedStatement sentencia = con.prepareStatement("delete from Jugador where id_jugador=?");
-            sentencia.setInt(1, j.getIdJugador());
+            PreparedStatement sentencia = con.prepareStatement("delete from Jugador where dni=?");
+            sentencia.setString(1, j.getDni());
             sentencia.executeUpdate();
             
             con.close();
@@ -78,7 +78,7 @@ public class JugadorBD {
             sentencia.setString(1, dni);
             ResultSet resultado = sentencia.executeQuery();
             if(resultado.next()){
-                Equipo e= proyecto.Proyecto.buscarEquipoId(Integer.toString(resultado.getInt("ID_EQUIPO")));
+                Equipo e= proyecto.Proyecto.buscarEquipoId(Integer.toString(resultado.getInt(1)));
                 Jugador j = new Jugador(resultado.getInt(1),resultado.getString(2),resultado.getString(3), resultado.getString(4), resultado.getDouble(5), e); 
                 //Para recoger la informacion de la base y crear un objeto con ella
                 con.close();
@@ -95,7 +95,23 @@ public class JugadorBD {
         }
     }
     
-    public static void dueñoCreaEquipo(Jugador j) throws Exception {
+    public static void dueñoMeteJugador(Jugador j) throws Exception {
+        GenericoBD gbd = new GenericoBD();
+        con = gbd.abrirConexion(con);
+        try{
+            PreparedStatement sentencia = con.prepareStatement("update Jugador set id_equipo=? where nombre=?");
+            sentencia.setInt(1, j.getEquipo().getIdEquipo());//Equipo
+            sentencia.setString(2, j.getNombre());
+            sentencia.executeUpdate();
+            
+            con.close();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    public static void dueñoSacaJugador(Jugador j) throws Exception {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         try{

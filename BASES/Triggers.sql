@@ -35,6 +35,13 @@ BEGIN
   INSERT INTO Login (usuario, contraseña, id_persona) VALUES (:new.dni, SUBSTR(:new.nombre, 1, 3), :new.id_persona);
 END GenerarLogin;
   
+--TRIGGER BORRAR PERSONA DEL LOGIN
+CREATE OR REPLACE TRIGGER BorrarUser
+  AFTER DELETE ON Persona 
+  FOR EACH ROW
+BEGIN
+  DELETE FROM Login WHERE login.id_persona=:old.id_persona; 
+END BorrarUser;
   
   
   

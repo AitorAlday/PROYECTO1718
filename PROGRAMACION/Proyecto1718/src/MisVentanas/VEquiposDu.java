@@ -154,15 +154,10 @@ public class VEquiposDu extends javax.swing.JFrame {
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         try{
             if(rbBorrar.isSelected()){
-                
+                proyecto.Proyecto.dueñoSacaJugador((String)cbNombre.getSelectedItem(), jlJugadores.getSelectedValue());
             }
             else{
-                if(rbCrear.isSelected()){
-                    proyecto.Proyecto.dueñoCreaEquipo((String)cbNombre.getSelectedItem(), jlJugadores.getSelectedValue());
-                }
-                else{
-                    
-                }
+                proyecto.Proyecto.dueñoMeteJugador((String)cbNombre.getSelectedItem(), jlJugadores.getSelectedValue());
             }
         }
         catch(Exception e){

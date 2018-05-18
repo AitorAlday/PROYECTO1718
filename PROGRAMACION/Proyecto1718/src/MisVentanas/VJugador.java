@@ -216,6 +216,9 @@ public class VJugador extends javax.swing.JFrame {
     private void rbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbBorrarActionPerformed
         opt='b';
         tfDni.setEnabled(true);
+        tfNick.setEnabled(false);
+        tfNombre.setEnabled(false);
+        tfSueldo.setEnabled(false);
         bBuscar.setVisible(true);
         bBuscar.setEnabled(true);
     }//GEN-LAST:event_rbBorrarActionPerformed

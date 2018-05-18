@@ -3,8 +3,8 @@ package MisVentanas;
 /**
  * Cuadro de dialogo para hacer login
  * Detecta si es root o si han fallado en logearse mas de tres veces
- * @version 1.1, 05/05/2017
- * @author Asier Suarez
+ * @version 1.1, 05/05/2018
+ * @author Aitor Alday
  */
 
 import javax.swing.JOptionPane;

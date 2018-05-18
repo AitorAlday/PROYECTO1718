@@ -154,6 +154,12 @@ public class Proyecto {
         vP.dispose();
     }
     
+    public static void cerrarSesion(){
+        vP1.dispose();
+        
+        iniciarProyecto();
+    }
+    
     public static void toDLogin(String mensaje) {
         dL.mostrarMensaje(mensaje);
     }
@@ -343,11 +349,18 @@ public class Proyecto {
     // <editor-fold defaultstate="collapsed" desc="Para dueño">  
         
         // <editor-fold defaultstate="collapsed" desc="Gestion de equipos">   
-            public static void dueñoCreaEquipo(String eq, String nombre) throws Exception{
+            public static void dueñoMeteJugador(String eq, String nombre) throws Exception{
                 Equipo eqq = EquipoBD.buscarEquipoPorNombre(eq);
                 Jugador j = JugadorBD.buscarJugadorPorNombre(nombre);
                 j.setEquipo(eqq);
-                JugadorBD.dueñoCreaEquipo(j);
+                JugadorBD.dueñoMeteJugador(j);
+            }
+            
+            public static void dueñoSacaJugador(String eq, String nombre) throws Exception{
+                Equipo eqq = EquipoBD.buscarEquipoPorNombre(eq);
+                Jugador j = JugadorBD.buscarJugadorPorNombre(nombre);
+                j.setEquipo(eqq);
+                JugadorBD.dueñoSacaJugador(j);
             }
             
             public static void buscarParaRellenar(javax.swing.JComboBox cbEquipo) throws Exception{

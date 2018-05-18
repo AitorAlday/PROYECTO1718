@@ -6,6 +6,7 @@
 package MisClasesBD;
 
 import MisClases.Equipo;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -160,19 +161,14 @@ public class EquipoBD {
         }
     }
     
-    public static void crearEquipoDueño(Equipo eq) throws Exception{
+    public static Equipo buscarEquipoDueño() throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
+        
         try{
-            PreparedStatement sentencia = con.prepareStatement("insert into Equipo(nombre, id_jugador) values (?, ?)");
-            sentencia.setString(1, eq.getRef());
-            sentencia.setObject(2, eq.getJugadores());
-            sentencia.executeUpdate();
-            
-            con.close();
+            CallableStatement cls = con.prepareCall("BEGIN buscarEquipoEntero(?, ?, ?);END;");
+            cls.setInt(1, );
         }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-        }
+        
     }
 }

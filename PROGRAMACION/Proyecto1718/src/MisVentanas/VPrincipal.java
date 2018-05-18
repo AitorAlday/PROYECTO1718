@@ -43,6 +43,8 @@ public class VPrincipal extends javax.swing.JFrame {
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -57,6 +59,9 @@ public class VPrincipal extends javax.swing.JFrame {
         miEquipo = new javax.swing.JMenuItem();
         miPersona = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jmSalir = new javax.swing.JMenuItem();
+        jmCerrarSesion = new javax.swing.JMenuItem();
 
         jMenuItem4.setText("jMenuItem4");
 
@@ -70,6 +75,10 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenu10.setText("jMenu10");
 
         jMenuItem8.setText("jMenuItem8");
+
+        jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,6 +150,26 @@ public class VPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jmAdmin);
 
+        jMenu2.setText("Opciones");
+
+        jmSalir.setText("Salir");
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmSalir);
+
+        jmCerrarSesion.setText("Cerrar sesión");
+        jmCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmCerrarSesion);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,6 +223,14 @@ public class VPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        proyecto.Proyecto.cerrarProyecto();
+    }//GEN-LAST:event_jmSalirActionPerformed
+
+    private void jmCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCerrarSesionActionPerformed
+        proyecto.Proyecto.cerrarSesion();
+    }//GEN-LAST:event_jmCerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -234,9 +271,12 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem3;
@@ -245,7 +285,9 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenu jmAdmin;
+    private javax.swing.JMenuItem jmCerrarSesion;
     private javax.swing.JMenu jmDuenio;
+    private javax.swing.JMenuItem jmSalir;
     private javax.swing.JMenu jmUsuario;
     private javax.swing.JMenuItem miEquipo;
     private javax.swing.JMenuItem miGestionEq;
