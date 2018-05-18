@@ -6,11 +6,13 @@
 package MisClasesBD;
 
 import MisClases.Equipo;
+import MisClases.Jugador;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import oracle.jdbc.OracleTypes;
 
 /**
  *
@@ -40,7 +42,7 @@ public class EquipoBD {
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
          try{
-            PreparedStatement sentencia = con.prepareStatement("update Equipo set referencia=?, nombre=?");
+            PreparedStatement sentencia = con.prepareStatement("update Equipo set referencia=?, nombre=? where referencia=?");
             sentencia.setString(1, eq.getRef());
             sentencia.setString(2, eq.getNombre());
             sentencia.executeUpdate();
@@ -161,14 +163,25 @@ public class EquipoBD {
         }
     }
     
-    public static Equipo buscarEquipoDueño() throws Exception{
+    public static void buscarEquipoDueño(Equipo e, Jugador j) throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         
         try{
-            CallableStatement cls = con.prepareCall("BEGIN buscarEquipoEntero(?, ?, ?);END;");
-            cls.setInt(1, );
+            CallableStatement cls = con.prepareCall("{CALL buscarEquipoEntero(?, ?, ?)}");
+            cls.registerOutParameter(1, OracleTypes.VARCHAR);    
+            cls.registerOutParameter(2, OracleTypes.VARCHAR);
+            cls.execute();
+            
+            ResultSet rs = cls.getResultSet();
+            
+            String out = cls.getString(1);
+            out = cls.getString(e.getNombre());
+            String out2 = cls.getString(2);
+            out2 = cls.getString(j.getNombre());
         }
-        
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 }
