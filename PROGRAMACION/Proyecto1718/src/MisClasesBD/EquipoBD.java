@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import oracle.jdbc.OracleCallableStatement;
 import oracle.jdbc.OracleTypes;
 
 /**
@@ -163,25 +164,37 @@ public class EquipoBD {
         }
     }
     
-    public static void buscarEquipoDueño(Equipo e, Jugador j) throws Exception{
+    public static ArrayList buscarEquipoDueño() throws Exception{
         GenericoBD gbd = new GenericoBD();
         con = gbd.abrirConexion(con);
         
+        ArrayList <Jugador> listaJu = new ArrayList();
         try{
-            CallableStatement cls = con.prepareCall("{CALL buscarEquipoEntero(?, ?, ?)}");
-            cls.registerOutParameter(1, OracleTypes.VARCHAR);    
-            cls.registerOutParameter(2, OracleTypes.VARCHAR);
+            CallableStatement cls = con.prepareCall("{CALL PaqueteBuscarEquipo.buscarJugadoresEquipo(?)}");
+            
+            cls.registerOutParameter(1, OracleTypes.CURSOR);
             cls.execute();
             
-            ResultSet rs = cls.getResultSet();
+            ResultSet rs = (ResultSet) cls.getObject(1);
             
-            String out = cls.getString(1);
-            out = cls.getString(e.getNombre());
-            String out2 = cls.getString(2);
-            out2 = cls.getString(j.getNombre());
+            if(rs.next()){
+                do{
+                   Jugador j = new Jugador();
+                   j.setNombre(rs.getString("nombre"));
+                   
+                   listaJu.add(j);
+                }
+                while(rs.next());  
+            }
+            else{
+                System.out.println("No hay jugadores");
+            }
+            con.close();
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
+        con.close();
+        return listaJu;
     }
 }
